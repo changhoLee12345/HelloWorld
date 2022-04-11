@@ -15,7 +15,7 @@ public class VarExample6 {
 				+ "이고 키는 " + height + "이고" //
 				+ "영어,수학점수의 합은 " + (mathScore + engScore)//
 				+ "입니다.");
-
+//commit
 //		char firstChar = myName.charAt(0);
 //		System.out.println((int) firstChar);
 
