@@ -6,7 +6,7 @@ package co.test;
 // Exam4(친구정보) 클래스의 인스턴스를 저장, 수정, 삭제, 조회 처리.
 public class Exam5 {
 	public static void main(String[] args) {
-
+		Exam4[] members = new Exam4[10];
 		while (true) {
 			System.out.println("1.추가 2.수정(이름,연락처) 3.삭제(이름) 4.조회(이름) 5.종료");
 		}
