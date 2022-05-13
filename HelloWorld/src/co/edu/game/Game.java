@@ -9,7 +9,10 @@ public class Game {
 		game();
 
 	}
+	
+	
 
+	// 위치 변경하기 게임.
 	public void game() {
 		Pos[] pos = new Pos[MY_POS];
 		for (int i = 0; i < MY_POS; i++) {
@@ -53,7 +56,7 @@ public class Game {
 
 			// 위치를 변경시키는 조건.
 			for (int i = 0; i < pos.length - 1; i++) {
-				if (pos[i].x == curx && pos[i].y == cury + 1) {
+				if (pos[i].x == curx && pos[i].y == cury) {
 					if (curx < 4)
 						curx++;
 					else
@@ -74,9 +77,5 @@ public class Game {
 	public void clear() {
 		for (int i = 0; i < 10; i++)
 			System.out.println();
-	}
-
-	public String getPos() {
-		return null;
 	}
 }
