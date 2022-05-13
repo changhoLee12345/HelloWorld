@@ -66,6 +66,7 @@ public class App {
 
 	public void showChat(List<ChatVO> chatList) {
 
+		// 최초 화면을 보여줄때 10개까지만 채팅목록을 보여주려고 작업중.
 		chatList.stream().forEach(vo -> {
 			if (vo.getSeq() < firstSeq) {
 				firstSeq = vo.getSeq();
@@ -76,6 +77,7 @@ public class App {
 			}
 		});
 
+		// 바뀐 내용이 있는것만 추가해서 보여주려고...
 		for (ChatVO vo : chatList) {
 			if (vo.getSeq() > prevSeq) {
 				if (vo.getWriter().equals(user)) {
