@@ -2,28 +2,27 @@ package co.edu.game;
 
 public class Game {
 
-	static final int MY_POS = 7;
-
 	public void start() {
 
 		game();
 
 	}
-	
-	
 
 	// 위치 변경하기 게임.
 	public void game() {
-		Pos[] pos = new Pos[MY_POS];
-		for (int i = 0; i < MY_POS; i++) {
-			int startPosition = (int) (Math.random() * MY_POS) + 3;
-			pos[i] = new Pos(i, startPosition);
+		int POS_CNT = 10; // pos 갯수. 이 중 하나는 ==> 가 포함되어 있음.
+		int LANE_CNT = 6; // lane 갯수.
+		int COL_CNT = 10; // column 갯수.
+		Pos[] pos = new Pos[POS_CNT];
+		for (int i = 0; i < POS_CNT; i++) {
+			int startPosition = (int) (Math.random() * (COL_CNT - 5)) + 5;
+			pos[i] = new Pos(i % LANE_CNT, startPosition);
 		}
-		int[][] fields = new int[6][10];
+		int[][] fields = new int[LANE_CNT][COL_CNT];
 		int curx = 0, cury = 0;
 
 		for (int times = 0; times < 100; times++) {
-			pos[MY_POS - 1] = new Pos(curx, cury);
+			pos[POS_CNT - 1] = new Pos(curx, cury);
 			clear();
 			System.out.println("________________________________________");
 			for (int i = 0; i < fields.length; i++) {
@@ -42,7 +41,7 @@ public class Game {
 
 						}
 					}
-					if (pos[MY_POS - 1].x == i && pos[MY_POS - 1].y == j) {
+					if (pos[POS_CNT - 1].x == i && pos[POS_CNT - 1].y == j) {
 						System.out.print("|==>");
 					} else if (exist) {
 						System.out.printf("|%s,%s", i, j);
