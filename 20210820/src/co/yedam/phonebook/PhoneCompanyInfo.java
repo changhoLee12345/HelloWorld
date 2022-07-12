@@ -1,25 +1,22 @@
 package co.yedam.phonebook;
 
+public class PhoneCompanyInfo extends PhoneInfo {
 
-public class PhoneCompanyInfo extends PhoneInfo{
-	
 	String company;
-	
-	public PhoneCompanyInfo(String name, String num, String company)
-	{
+
+	public PhoneCompanyInfo(String name, String num, String company) {
 		super(name, num);
-		this.company=company;
+		this.company = company;
 	}
-	
+
 	@Override
-	public void showPhoneInfo()
-	{
+	public void showPhoneInfo() {
 		super.showPhoneInfo();
-		System.out.println("company: "+company);
+		System.out.println("company: " + company);
 	}
 
 	@Override
 	public String toString() {
-		return INPUT_SELECT.COMPANY +"," + name + "," + phoneNumber + "," + company + "\n";
+		return INPUT_SELECT.COMPANY + "," + name + "," + phoneNumber + "," + company + "\n";
 	}
 }

@@ -4,16 +4,15 @@ import java.io.Serializable;
 
 /**
  * 
- * @author dbale
- * 메모 하나를 저장
+ * @author dbale 메모 하나를 저장
  */
-public class Memo  implements Serializable{
+public class Memo implements Serializable {
 
 	private int no;
 	private String date;
 	private String content;
-	
-	//생성자( 필드3개 모두 초기화, date/content 초기화,  content 초기화, 기본생성자 )
+
+	// 생성자( 필드3개 모두 초기화, date/content 초기화, content 초기화, 기본생성자 )
 	public Memo(int no, String date, String content) {
 		super();
 		this.no = no;
@@ -28,7 +27,7 @@ public class Memo  implements Serializable{
 	}
 
 	public Memo(String content) {
-		//오늘날짜를 스트링으로 변환
+		// 오늘날짜를 스트링으로 변환
 		String date = "";
 		this.date = date;
 		this.content = content;
@@ -38,8 +37,7 @@ public class Memo  implements Serializable{
 		super();
 	}
 
-	
-	//setter/getter
+	// setter/getter
 	public int getNo() {
 		return no;
 	}
@@ -64,22 +62,22 @@ public class Memo  implements Serializable{
 		this.content = content;
 	}
 
-	//toString
+	// toString
 	@Override
 	public String toString() {
 		return "Memo [no=" + no + ", date=" + date + ", content=" + content + "]";
 	}
 
-	//equals (날짜비교)
+	// equals (날짜비교)
 	@Override
 	public boolean equals(Object obj) {
-		Memo target = (Memo)obj;
+		Memo target = (Memo) obj;
 		return this.no == target.no && this.date.equals(target.date);
 	}
 
 	@Override
 	public int hashCode() {
-		return no+date.hashCode();
+		return no + date.hashCode();
 	}
-	
+
 }
