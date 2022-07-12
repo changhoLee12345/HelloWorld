@@ -31,7 +31,7 @@ public class MemoManager {
 		int no = Integer.parseInt(scanner.nextLine());
 		System.out.print("날짜>");
 		String date = scanner.nextLine();
-		System.out.print("내용");
+		System.out.print("내용>");
 		String content = scanner.nextLine();
 		memoStorage.add(new Memo(no, date, content));
 	}
