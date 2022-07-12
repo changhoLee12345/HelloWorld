@@ -7,30 +7,31 @@ import java.io.FileOutputStream;
 public class ByteTest {
 
 	public static void main(String[] args) {
-		// write1();
+//		write1();
 		try {
-			// write2();
+//			write2();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// read1();
-		// read2();
+//		read1();
+//		read2();
 		filecopy();
 	}
 
 	public static void filecopy() {
 		try {
-			FileInputStream fis = new FileInputStream(new File("c:\\Temp", "class.PNG"));
-			FileOutputStream fos = new FileOutputStream("c:\\Temp\\class2.PNG");
+			FileInputStream fis = new FileInputStream(new File("c:\\Temp", "class.jpg"));
+			FileOutputStream fos = new FileOutputStream("c:\\Temp\\class2.jpg");
 			byte[] arr = new byte[100];
 			while (true) {
 				int a = fis.read(arr);
 				if (a == -1)
 					break;
-				fos.write(arr, 0, a);
+				fos.write(arr, 0, a); // 배열의 크기만큼 읽어 들인값을 반환한다.
 			}
 			fis.close();
 			fos.close();
+			System.out.println("생성.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -45,8 +46,9 @@ public class ByteTest {
 				if (a == -1)
 					break;
 				for (int i = 0; i < a; i++) {
-					System.out.println(arr[i]);
+					System.out.print(arr[i] + " ");
 				}
+				System.out.println();
 			}
 			fis.close();
 
@@ -57,7 +59,7 @@ public class ByteTest {
 
 	public static void read1() {
 		try {
-			FileInputStream fis = new FileInputStream("c:/Temp/data2.dat");
+			FileInputStream fis = new FileInputStream("c:/Temp/data1.dat");
 			while (true) {
 				int a = fis.read();
 				if (a == -1)

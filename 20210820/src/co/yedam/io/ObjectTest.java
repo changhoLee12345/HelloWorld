@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class ObjectTest {
 
 	public static void main(String[] args) {
-		// write1();
+		write1();
 		read1();
 	}
 
@@ -17,8 +17,11 @@ public class ObjectTest {
 		try {
 			FileInputStream fis = new FileInputStream("c:/Temp/emp.dat");
 			ObjectInputStream ois = new ObjectInputStream(fis);
+			@SuppressWarnings("unchecked")
 			ArrayList<Emp> list = (ArrayList<Emp>) ois.readObject();
 			System.out.println(list);
+			ois.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

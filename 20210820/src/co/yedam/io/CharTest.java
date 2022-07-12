@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class CharTest {
 	public static void main(String[] args) {
 
-		// write1();
-		// read1();
+//		write1();
+//		read1();
 		read2();
 	}
 
@@ -65,6 +65,7 @@ public class CharTest {
 				}
 				fw.write(s + "\n");
 			}
+			scanner.close();
 			fw.close();
 			System.out.println("생성!");
 		} catch (Exception e) {
