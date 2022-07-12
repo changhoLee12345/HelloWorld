@@ -4,12 +4,15 @@ import java.util.Scanner;
 
 /*
  * 문제 5: 배열.
- * Scanner 클래스를 사용하여 사용자가 입력한 값을 다음의 배열에서 찾아서 값이 있을 경우에는 해당 값의 저장위치를 값이 없을 경우에는
- * 찾는 값이 없습니다는 메세지를 보여주도록 기능을 작성하세요.
+ * members 배열에서 회원의 아이디를 조회하는 기능을 작성하세요.
+ * 사용자의 입력값을 배열에서 조회하고 입력한 값의 회원아이디가 존재할 경우에 출력.
+ * 예) 사용자 입력값 : white => "입력한 회원아이디가 존재합니다."
+ *    사용자 입력값 : black => "입력한 회원아이디가 없습니다."
  */
 public class Exam05 {
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
-		String[] fruits = { "사과", "딸기", "감", "수박", "포도", "복숭아" };
+		String[] members = { "green", "blue", "white", "red", "bluesky" };
+
 	}
 }
