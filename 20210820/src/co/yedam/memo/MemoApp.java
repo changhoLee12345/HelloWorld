@@ -8,6 +8,7 @@ public class MemoApp {
 		MemoManager memoManage = MemoManager.getInstance();
 		Scanner scanner = new Scanner(System.in);
 		int choice;
+
 		while (true) {
 			try {
 				// 메뉴출력
