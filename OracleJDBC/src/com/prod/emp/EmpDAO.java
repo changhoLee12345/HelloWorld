@@ -111,26 +111,6 @@ public class EmpDAO extends DAO {
 	public Employee searchEmp(int eid) {
 		conn = getConnect();
 		Employee emp = null;
-<<<<<<< HEAD
-		String sql = "select * from emp where employee_id = ?";
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, eid);
-			rs = psmt.executeQuery();
-			if (rs.next()) {
-				emp = new Employee();
-				emp.setEmployeeId(rs.getInt("employee_id")); // employees.employee_id
-				emp.setFirstName(rs.getString("first_name"));
-				emp.setLastName(rs.getString("last_name"));
-				emp.setHireDate(rs.getString("hire_date").substring(0, 10));
-				emp.setPhoneNumber(rs.getString("phone_number"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
-		}
-=======
 		String sql = "select * from emp_java where employee_id = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -149,9 +129,6 @@ public class EmpDAO extends DAO {
 		} finally {
 			disconnect();
 		}
-//		Employee emp = new Employee();
-//		emp.setLastName("Hello\r\nNiceWorld");
->>>>>>> branch 'master' of https://github.com/changhoLee12345/HelloWorld.git
 		return emp;
 	}
 
