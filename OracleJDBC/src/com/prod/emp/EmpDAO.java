@@ -35,7 +35,7 @@ public class EmpDAO extends DAO {
 	// 입력처리 executeUpdate()
 	public boolean insertEmp(Employee emp) {
 		conn = getConnect();
-		String sql = "insert into emp_java (employee_id, last_name, email, hire_date, job_id)\r\n"
+		String sql = "insert into emp (employee_id, last_name, email, hire_date, job_id)\r\n"
 				+ "values (?, ?, ?, ?, ?)";
 		try {
 			psmt = conn.prepareStatement(sql); // ? <= 매개변수값중에서 employeeId 필드값.
@@ -62,7 +62,7 @@ public class EmpDAO extends DAO {
 	// 수정처리
 	public boolean updateEmp(Employee emp) {
 		conn = getConnect();
-		String sql = "update emp_java " //
+		String sql = "update emp " //
 				+ "set first_name = ?, " //
 				+ "    phone_number = ?, " //
 				+ "    salary = ? " //
@@ -92,7 +92,7 @@ public class EmpDAO extends DAO {
 	// 삭제처리
 	public void deleteEmp(int empId) {
 		conn = getConnect();
-		String sql = "delete from emp_java where employee_id = ?"; // 쿼리 작성 => ? 작성.
+		String sql = "delete from emp where employee_id = ?"; // 쿼리 작성 => ? 작성.
 		try {
 			psmt = conn.prepareStatement(sql);
 			// 파라메터(?) 값을 지정.
@@ -111,6 +111,7 @@ public class EmpDAO extends DAO {
 	public Employee searchEmp(int eid) {
 		conn = getConnect();
 		Employee emp = null;
+<<<<<<< HEAD
 		String sql = "select * from emp where employee_id = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -129,6 +130,28 @@ public class EmpDAO extends DAO {
 		} finally {
 			disconnect();
 		}
+=======
+		String sql = "select * from emp_java where employee_id = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, eid);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				emp = new Employee();
+				emp.setEmployeeId(rs.getInt("employee_id")); // employees.employee_id
+				emp.setFirstName(rs.getString("first_name"));
+				emp.setLastName(rs.getString("last_name"));
+				emp.setHireDate(rs.getString("hire_date").substring(0, 10));
+				emp.setPhoneNumber(rs.getString("phone_number"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+//		Employee emp = new Employee();
+//		emp.setLastName("Hello\r\nNiceWorld");
+>>>>>>> branch 'master' of https://github.com/changhoLee12345/HelloWorld.git
 		return emp;
 	}
 
