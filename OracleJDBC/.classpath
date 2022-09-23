@@ -6,6 +6,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="/home/ubuntie/Dev/ojdbc8-12.2.0.1.jar"/>
+=======
+	<classpathentry kind="lib" path="/home/leadon/Downloads/ojdbc8-12.2.0.1.jar"/>
+>>>>>>> branch 'master' of https://github.com/changhoLee12345/HelloWorld.git
 	<classpathentry kind="output" path="bin"/>
 </classpath>

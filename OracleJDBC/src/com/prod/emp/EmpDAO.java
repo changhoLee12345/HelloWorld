@@ -129,7 +129,6 @@ public class EmpDAO extends DAO {
 		} finally {
 			disconnect();
 		}
-
 		return emp;
 	}
 
