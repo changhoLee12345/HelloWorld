@@ -14,11 +14,11 @@ public class ExceptionTest {
 
 		ArrayList<String> list = new ArrayList<>();
 		sub3(list);
-		
+
 		System.out.println("end===");
 
 	}
-	
+
 	public static void sub3(ArrayList<String> a) {
 		try {
 			a.add("aa");
@@ -27,17 +27,16 @@ public class ExceptionTest {
 			System.out.println(e.getMessage());
 		}
 	}
-	
 
 	public static void sub2(String d) {
-		
+
 		try {
 			int a = Integer.parseInt(d);
 			System.out.println("a=" + a);
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public static void sub1(String d) {

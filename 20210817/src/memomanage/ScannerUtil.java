@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class ScannerUtil {
-	
+
 	static Scanner scanner = new Scanner(System.in);
 
 	public static int readInt() {
@@ -20,14 +20,14 @@ public class ScannerUtil {
 		}
 		return result;
 	}
-	
+
 	// 숫자입력
 	public static int readInt(String prompt) {
 		System.out.print(prompt);
 		System.out.print(">");
 		return readInt();
 	}
-	
+
 	// 날짜입력
 	public static String readDate() {
 		String result = "";
@@ -42,19 +42,20 @@ public class ScannerUtil {
 			}
 		} while (true);
 		return result;
-	}	
+	}
+
 	public static String readDate(String prompt) {
 		System.out.print(prompt);
 		System.out.print(">");
 		return readDate();
 	}
-	
+
 	public static String readStr(String prompt) {
 		System.out.print(prompt);
 		System.out.print(">");
 		return readStr();
 	}
-	
+
 	// 한줄입력
 	public static String readStr() {
 		String result = "";
@@ -65,7 +66,6 @@ public class ScannerUtil {
 		}
 		return result;
 	}
-
 
 	// 여러줄입력
 	public static String readMultiLine() {

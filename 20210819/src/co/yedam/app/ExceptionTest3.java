@@ -12,7 +12,7 @@ public class ExceptionTest3 {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		try {
 			String data = "a123";
 			sub2(data);
