@@ -3,6 +3,8 @@ package com.yedam.app;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -29,7 +31,10 @@ public class DateTest {
 
 		LocalDate day3 = LocalDate.now();
 		LocalDate day4 = day3.plusDays(100);
-		System.out.println(day4);
+		System.out.println("day4: " + day4);
+		LocalDateTime day5 = LocalDateTime.now();
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+		System.out.println("day4 : " + day5.format(format));
 
 		// Duration, LocalTime, LocalDateTime, Period
 
@@ -39,8 +44,8 @@ public class DateTest {
 		System.out.println("format:" + todayStr);
 
 		// string -> date
-		String sdate = "2020-10-01";
-		sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String sdate = "2020-10-01 13:14:15";
+		sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		Date ddate = sdf.parse(sdate);
 		System.out.println(ddate);
 
