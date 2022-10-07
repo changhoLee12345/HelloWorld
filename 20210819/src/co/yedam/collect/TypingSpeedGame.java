@@ -3,17 +3,19 @@ package co.yedam.collect;
 import java.util.Scanner;
 
 public class TypingSpeedGame {
-	public static void main(String[] args) {
-		String orign = "The new Madrid region will deliver hundreds of OCI services to help organizations";
-		Scanner scn = new Scanner(System.in);
 
+	public static void main(String[] args) {
+
+		String orign = "The new Madrid region will deliver hundreds of OCI services to help organizations";
+		String[] target = orign.split(" ");
+
+		Scanner scn = new Scanner(System.in);
 		boolean done = false;
 		long startTime = System.currentTimeMillis();
 
-		String[] target = orign.split(" ");
 		while (true) {
 
-			done = true;
+			done = true; // 빈 값이 있는지를 체크하기 위한 용도.
 			for (String str : target) {
 				if (str != null) {
 					System.out.printf("%s ", str);
@@ -39,6 +41,10 @@ public class TypingSpeedGame {
 		long endTime = System.currentTimeMillis();
 		long duringTime = endTime - startTime;
 
-		System.out.println("걸린시간은 " + duringTime);
+		long min = duringTime / (60 * 1000);
+		long sec = duringTime % (60 * 1000) / 1000;
+
+		System.out.println("걸린시간은 " + min + "분 " + sec + "초");
+		scn.close();
 	}
 }
