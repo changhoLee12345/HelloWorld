@@ -8,7 +8,7 @@ import co.yedam.memo.except.MenuException;
 public class MemoApp {
 
 	public static void main(String[] args) {
-		
+
 		MemoManager memoManage = MemoManager.getInstance();
 		Scanner scanner = new Scanner(System.in);
 		int choice;
@@ -37,9 +37,9 @@ public class MemoApp {
 					break;
 				case MENU.EXIT:
 					memoManage.storeToFile();
-//					System.exit(0);
-					throw new ExitException();
+					throw new ExitException(); // 종료하기 위한 처리.
 				}
+
 			} catch (MenuException e) {
 				e.showMessage();
 			} catch (ExitException ee) {
