@@ -8,7 +8,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class WordAry {
-	public static ArrayList<String> randomWords() throws FileNotFoundException {
+	public static ArrayList<String> randomWords(int times) throws FileNotFoundException {
+
 		String file = "src/co/yedam/collect/wordAry.txt";
 		File wordFile = new File(file);
 
@@ -20,16 +21,17 @@ public class WordAry {
 		while (scn.hasNext()) {
 			String readStr = scn.nextLine();
 			readStr = readStr.replaceAll("\"", "").trim();
-//			System.out.println(readStr.substring(0, readStr.indexOf(",")));
-//			System.out.println(readStr);
 			words.add(readStr.substring(0, readStr.indexOf(",")));
 
 		}
 
+		// 중복된 값을 제거하기. Set 컬렉션 사용.
 		Set<Integer> set = new HashSet<>();
-		while (set.size() < 5) {
+		while (set.size() < times) {
 			set.add((int) (Math.random() * words.size()));
 		}
+
+		// 선택된 문장을 출력하기.
 		ArrayList<String> randomWords = new ArrayList<>();
 		for (int no : set) {
 			randomWords.add(words.get(no));
@@ -39,26 +41,30 @@ public class WordAry {
 		return randomWords;
 	}
 
+	// 시간경과 보여주기.
 	public static void timeShow(long duration) {
 		long min = duration / (60 * 1000);
 		long sec = duration % (60 * 1000) / 1000;
 
+		System.out.println("=================================");
 		System.out.printf("%d 분 %d초\n", min, sec);
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		ArrayList<String> words = randomWords(); // 새로운 10개의 문장 생성.
+		ArrayList<String> words = randomWords(5); // 새로운 10개의 문장 생성.
 		Scanner scn = new Scanner(System.in);
 
 		long start = System.currentTimeMillis();
 
 		// 문장을 하나씩 제거하기.
 		while (true) {
+			System.out.println("=================================");
 			// 문장출력.
 			for (String word : words) {
 				System.out.println(word);
 			}
+			System.out.println("=================================");
 
 			System.out.print(">> ");
 			String searchWord = scn.nextLine();

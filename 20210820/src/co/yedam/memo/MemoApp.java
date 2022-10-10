@@ -2,9 +2,13 @@ package co.yedam.memo;
 
 import java.util.Scanner;
 
+import co.yedam.memo.except.ExitException;
+import co.yedam.memo.except.MenuException;
+
 public class MemoApp {
 
 	public static void main(String[] args) {
+		
 		MemoManager memoManage = MemoManager.getInstance();
 		Scanner scanner = new Scanner(System.in);
 		int choice;

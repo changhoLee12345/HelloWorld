@@ -1,4 +1,4 @@
-package co.yedam.memo;
+package co.yedam.memo.except;
 
 public class ExitException extends Exception {
 

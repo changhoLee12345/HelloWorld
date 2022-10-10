@@ -8,20 +8,20 @@ public class ByteTest {
 
 	public static void main(String[] args) {
 //		write1();
+//		read1();
 		try {
 //			write2();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		read1();
 //		read2();
 		filecopy();
 	}
 
 	public static void filecopy() {
 		try {
-			FileInputStream fis = new FileInputStream(new File("c:\\Temp", "class.jpg"));
-			FileOutputStream fos = new FileOutputStream("c:\\Temp\\class2.jpg");
+			FileInputStream fis = new FileInputStream(new File("c:\\Temp", "sample_orig.jpg"));
+			FileOutputStream fos = new FileOutputStream("c:\\Temp\\sample_copy.jpg");
 			byte[] arr = new byte[100];
 			while (true) {
 				int a = fis.read(arr);
@@ -42,9 +42,13 @@ public class ByteTest {
 			FileInputStream fis = new FileInputStream("c:/Temp/data2.dat");
 			byte[] arr = new byte[2]; // 3 바이트
 			while (true) {
+				// 배열일 경우에는 버퍼에 읽어들인 크기를 반환.
 				int a = fis.read(arr);
+
+				// 반환값이 -1이면 파일의 끝부분.
 				if (a == -1)
 					break;
+
 				for (int i = 0; i < a; i++) {
 					System.out.print(arr[i] + " ");
 				}
