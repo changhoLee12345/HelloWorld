@@ -2,6 +2,20 @@ package co.yedam.collect;
 
 import java.util.Stack;
 
+class Coin {
+	private int value;
+
+	public Coin(int value) {
+		super();
+		this.value = value;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+}
+
 public class StackExample {
 
 	public static void main(String[] args) {

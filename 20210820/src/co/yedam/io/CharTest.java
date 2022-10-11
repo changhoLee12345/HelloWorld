@@ -16,9 +16,13 @@ public class CharTest {
 
 	// 버퍼를 통해서 파일입력
 	public static void read2() {
-		try {
-			FileReader fr = new FileReader("c:/Temp/addr.txt");
-			BufferedReader br = new BufferedReader(fr);
+
+		// try with resource 예외처리.
+		try ( //
+				FileReader fr = new FileReader("c:/Temp/addr.txt"); //
+				BufferedReader br = new BufferedReader(fr);//
+		) {
+
 			String s = null;
 			while (true) {
 				s = br.readLine();
@@ -50,7 +54,7 @@ public class CharTest {
 		}
 	}
 
-	// 키보드 입력(ctrl+z) 받아서 파일에 저장
+	// 키보드 입력(ctrl+z) 받아서 파일에 저장!!!
 	public static void write1() {
 		try {
 			FileWriter fw = new FileWriter("c:/Temp/addr.txt");
@@ -60,6 +64,8 @@ public class CharTest {
 			while (true) {
 				try {
 					s = scanner.nextLine();
+					if (s.equals("quit"))
+						break;
 				} catch (NoSuchElementException e) {
 					break;
 				}

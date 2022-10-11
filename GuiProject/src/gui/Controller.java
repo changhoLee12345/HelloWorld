@@ -14,8 +14,9 @@ public class Controller {
 
 	public Controller() {
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://192.168.0.14:3306/memberinfo?serverTimezone=UTC&allowPublicKeyRetrieval=true", "mysql",
-					"mysql");
+			conn = DriverManager.getConnection(
+					"jdbc:mysql://192.168.0.14:3306/memberinfo?serverTimezone=UTC&allowPublicKeyRetrieval=true",
+					"mysql", "mysql");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

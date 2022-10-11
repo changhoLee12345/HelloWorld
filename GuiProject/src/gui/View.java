@@ -15,10 +15,10 @@ public class View {
 	JTextField t4 = new JTextField();
 	JTextArea ta = new JTextArea();
 	JButton btn1, btn2, btn3, btn4, btn5;
-	JLabel ㅣ1 = new JLabel("이름 : ");
-	JLabel ㅣ2 = new JLabel("생년월일 : ");
-	JLabel ㅣ3 = new JLabel("전화번호 : ");
-	JLabel ㅣ4 = new JLabel("검색내용 : ");
+	JLabel l1 = new JLabel("이름 : ");
+	JLabel l2 = new JLabel("생년월일 : ");
+	JLabel l3 = new JLabel("전화번호 : ");
+	JLabel l4 = new JLabel("검색내용 : ");
 
 	View() {
 		GUI_init();
@@ -29,28 +29,29 @@ public class View {
 		jframe.setBounds(50, 50, 480, 450);
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jframe.setVisible(true);
-		jpanel.setLayout(null);
 		jframe.add(jpanel);
+
+		jpanel.setLayout(null);
 
 		t1.setBounds(75, 25, 70, 25);
 		jpanel.add(t1);
-		ㅣ1.setBounds(37, 21, 70, 30);
-		jpanel.add(ㅣ1);
+		l1.setBounds(37, 21, 70, 30);
+		jpanel.add(l1);
 
 		t2.setBounds(213, 25, 70, 25);
 		jpanel.add(t2);
-		ㅣ2.setBounds(150, 21, 70, 30);
-		jpanel.add(ㅣ2);
+		l2.setBounds(150, 21, 70, 30);
+		jpanel.add(l2);
 
 		t3.setBounds(352, 25, 80, 25);
 		jpanel.add(t3);
-		ㅣ3.setBounds(290, 21, 70, 30);
-		jpanel.add(ㅣ3);
+		l3.setBounds(290, 21, 70, 30);
+		jpanel.add(l3);
 
 		t4.setBounds(213, 105, 80, 25);
 		jpanel.add(t4);
-		ㅣ4.setBounds(150, 100, 70, 30);
-		jpanel.add(ㅣ4);
+		l4.setBounds(150, 100, 70, 30);
+		jpanel.add(l4);
 
 		JScrollPane jsp = new JScrollPane(ta);
 		jsp.setBounds(23, 145, 420, 250);

@@ -13,14 +13,17 @@ public class ObjectTest {
 		read1();
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void read1() {
-		try {
-			FileInputStream fis = new FileInputStream("c:/Temp/emp.dat");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			@SuppressWarnings("unchecked")
+		try (FileInputStream fis = new FileInputStream("c:/Temp/emp.dat");
+				ObjectInputStream ois = new ObjectInputStream(fis);) {
+
 			ArrayList<Emp> list = (ArrayList<Emp>) ois.readObject();
-			System.out.println(list);
-			ois.close();
+
+//			System.out.println(list); // 배열의 toString을 처리하는데...
+			for (Emp emp : list) {
+				System.out.println(emp.toString());
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -33,11 +36,11 @@ public class ObjectTest {
 		list.add(new Emp(2, "김길동", "개발"));
 		list.add(new Emp(3, "이기자", "인사"));
 
-		try {
-			FileOutputStream fos = new FileOutputStream("c:/Temp/emp.dat");
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
+		try (FileOutputStream fos = new FileOutputStream("c:/Temp/emp.dat"); //
+				ObjectOutputStream oos = new ObjectOutputStream(fos);) {
+
 			oos.writeObject(list);
-			oos.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
