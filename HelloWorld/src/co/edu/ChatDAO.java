@@ -54,6 +54,7 @@ public class ChatDAO {
 		List<ChatVO> list = new ArrayList<>();
 		String sql = "select * from chatting where creation_date between (sysdate - (300/24/60)) and sysdate order by seq";
 		try {
+			conn.setAutoCommit(false);
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
