@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -32,6 +33,7 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 
 		this.setLayout(new BorderLayout(10, 10));
 
+		// 위쪽 입력 값 등록.
 		JPanel topPanel = new JPanel(new GridLayout(6, 4, 10, 5));
 
 		for (int i = 0; i < 6; i++) {
@@ -42,12 +44,28 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 		topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		this.add("North", topPanel); // 가장 위쪽 Panel 설정
 
+		// table 구성.
 		String header[] = { "Name", "Age", "Sex", "Korean", "English", "Math" };
 		DefaultTableModel model = new DefaultTableModel(header, 0); // header추가, 행은 0개 지정
 
 		table = new JTable(model);
 		scrolledTable = new JScrollPane(table); // 스크롤 될 수 있도록 JScrollPane 적용
 		scrolledTable.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 너무 붙어있어서 가장자리 띄움(padding)
+
+		// 데이터 로딩.
+		ChatDAO dao = new ChatDAO();
+		List<Employee> list = dao.getList();
+		String[] record = new String[6];
+		for (Employee emp : list) {
+			record[0] = String.valueOf(emp.getEmployeeId());
+			record[1] = emp.getFirstName();
+			record[2] = emp.getLastName();
+			record[3] = emp.getEmail();
+			record[4] = emp.getHireDate();
+			record[5] = emp.getJobId();
+			model.addRow(record);
+		}
+
 		this.add("Center", scrolledTable); // 가운데에 JTable 추가
 
 		JPanel rightPanel = new JPanel(new GridLayout(5, 1, 10, 10));
@@ -166,6 +184,7 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 		}
 	}
 
+	// main method start.
 	public static void main(String[] args) {
 		new JTableTest("test");
 	}
