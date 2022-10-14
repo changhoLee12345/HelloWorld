@@ -53,18 +53,18 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 		scrolledTable.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 너무 붙어있어서 가장자리 띄움(padding)
 
 		// 데이터 로딩.
-		ChatDAO dao = new ChatDAO();
-		List<Employee> list = dao.getList();
-		String[] record = new String[6];
-		for (Employee emp : list) {
-			record[0] = String.valueOf(emp.getEmployeeId());
-			record[1] = emp.getFirstName();
-			record[2] = emp.getLastName();
-			record[3] = emp.getEmail();
-			record[4] = emp.getHireDate();
-			record[5] = emp.getJobId();
-			model.addRow(record);
-		}
+//		ChatDAO dao = new ChatDAO();
+//		List<Employee> list = dao.getList();
+//		String[] record = new String[6];
+//		for (Employee emp : list) {
+//			record[0] = String.valueOf(emp.getEmployeeId());
+//			record[1] = emp.getFirstName();
+//			record[2] = emp.getLastName();
+//			record[3] = emp.getEmail();
+//			record[4] = emp.getHireDate();
+//			record[5] = emp.getJobId();
+//			model.addRow(record);
+//		}
 
 		this.add("Center", scrolledTable); // 가운데에 JTable 추가
 
