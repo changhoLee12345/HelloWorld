@@ -6,9 +6,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/home/ubuntie/Dev/ojdbc8-12.2.0.1.jar"/>
-	<classpathentry kind="lib" path="/home/ubuntie/Dev/gson-2.9.0.jar"/>
-	<classpathentry kind="lib" path="/home/ubuntie/Dev/json-simple-1.1.1.jar"/>
-	<classpathentry kind="lib" path="/home/ubuntie/Dev/json-20220924.jar"/>
+	<classpathentry kind="lib" path="D:/Dev/ojdbc8-12.2.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/Dev/gson-2.9.0.jar"/>
+	<classpathentry kind="lib" path="D:/Dev/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/Dev/json-20220924.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
