@@ -36,7 +36,7 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 
 		this.setLayout(new BorderLayout(10, 10));
 
-		// 위쪽 입력 값 등록.
+		// 위쪽 입력 값 등록. topPanel.
 		JPanel topPanel = new JPanel(new GridLayout(6, 4, 10, 5));
 
 		for (int i = 0; i < 6; i++) {
@@ -55,18 +55,7 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 		scrolledTable = new JScrollPane(table); // 스크롤 될 수 있도록 JScrollPane 적용
 		scrolledTable.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 너무 붙어있어서 가장자리 띄움(padding)
 
-		// 데이터 로딩.
-		List<Employee> list = dao.getList();
-		String[] record = new String[6];
-		for (Employee emp : list) {
-			record[0] = String.valueOf(emp.getEmployeeId());
-			record[1] = emp.getFirstName();
-			record[2] = emp.getLastName();
-			record[3] = emp.getEmail();
-			record[4] = emp.getHireDate();
-			record[5] = emp.getJobId();
-			model.addRow(record);
-		}
+		initData();
 
 		this.add("Center", scrolledTable); // 가운데에 JTable 추가
 
@@ -119,13 +108,19 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 			}
 			record[i] = fields[i].getText();
 		}
+
 		Employee emp = new Employee(Integer.parseInt(record[0]), record[1], record[2], record[3], record[4], record[5]);
 		if (!dao.addEmp(emp)) {
 			JOptionPane.showMessageDialog(null, "저장 중 에러", "경고창", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 		model.addRow(record);
+		
+		initDisplay();
 
+	}
+
+	public void initDisplay() {
 		// 모든 TextField 비우기
 		for (int i = 0; i < 6; i++)
 			fields[i].setText("");
@@ -145,6 +140,7 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 
 	}
 
+	// 클릭한 레코드의 정보를 위쪽에 보여주기.
 	public void showDetail(Employee emp) {
 		fields[0].setText(String.valueOf(emp.getEmployeeId()));
 		fields[1].setText(emp.getFirstName());
@@ -152,6 +148,23 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 		fields[3].setText(emp.getEmail());
 		fields[4].setText(emp.getHireDate());
 		fields[5].setText(emp.getJobId());
+
+	}
+
+	// 초기 데이터 로딩.
+	public void initData() {
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		List<Employee> list = dao.getList();
+		String[] record = new String[6];
+		for (Employee emp : list) {
+			record[0] = String.valueOf(emp.getEmployeeId());
+			record[1] = emp.getFirstName();
+			record[2] = emp.getLastName();
+			record[3] = emp.getEmail();
+			record[4] = emp.getHireDate();
+			record[5] = emp.getJobId();
+			model.addRow(record);
+		}
 
 	}
 
