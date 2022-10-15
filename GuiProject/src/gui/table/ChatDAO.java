@@ -20,7 +20,7 @@ public class ChatDAO {
 	}
 
 	public void conn() {
-		int menu = 2;
+		int menu = 1;
 		if (menu == 1) {
 			url = "jdbc:oracle:thin:@192.168.0.14:1521:xe";
 		} else {
@@ -57,18 +57,29 @@ public class ChatDAO {
 			}
 	}
 
-	public List<Employee> getList() {
+	public List<Employee> getList(Employee emp) {
 		conn();
 		List<Employee> list = new ArrayList<>();
-		String sql = "select * from emp_temp order by 1";
+		String sql = "select * from emp_temp";
+		sql += " where employee_id=decode(?, 0, employee_id, ?) and first_name like '%'||?||'%' and last_name like '%'||?||'%' and email like '%'||?||'%' ";
+		sql += " and to_char(hire_date, 'yyyy-mm-dd') like '%'||?||'%' and job_id = nvl(?, job_id) ";
+		sql += "order by 1";
 		try {
 			conn.setAutoCommit(false);
 			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, emp.getEmployeeId());
+			psmt.setInt(2, emp.getEmployeeId());
+			psmt.setString(3, emp.getFirstName());
+			psmt.setString(4, emp.getLastName());
+			psmt.setString(5, emp.getEmail());
+			psmt.setString(6, emp.getHireDate());
+			psmt.setString(7, emp.getJobId());
+
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				Employee vo = new Employee(rs.getInt("employee_id"), rs.getString("first_name"),
-						rs.getString("last_name"), rs.getString("email"), rs.getString("job_id"),
-						rs.getString("hire_date"));
+						rs.getString("last_name"), rs.getString("email"), rs.getString("hire_date"),
+						rs.getString("job_id"));
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -119,6 +130,7 @@ public class ChatDAO {
 	}
 
 	public boolean addEmp(Employee emp) {
+		System.out.println(emp);
 		conn();
 		String sql = "insert into emp_temp(employee_id, first_name, last_name, email, hire_date, job_id) "//
 				+ " values(employees_seq.nextval,?,?,?,?,?)";

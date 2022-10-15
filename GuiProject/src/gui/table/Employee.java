@@ -8,7 +8,7 @@ public class Employee {
 	private String jobId;
 	private String hireDate;
 
-	public Employee(int employeeId, String firstName, String lastName, String email, String jobId, String hireDate) {
+	public Employee(int employeeId, String firstName, String lastName, String email, String hireDate, String jobId) {
 		super();
 		this.employeeId = employeeId;
 		this.firstName = firstName;
@@ -64,6 +64,12 @@ public class Employee {
 
 	public void setHireDate(String hireDate) {
 		this.hireDate = hireDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
+				+ email + ", jobId=" + jobId + ", hireDate=" + hireDate + "]";
 	}
 
 }
