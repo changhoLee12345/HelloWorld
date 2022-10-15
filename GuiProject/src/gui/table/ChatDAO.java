@@ -13,14 +13,22 @@ public class ChatDAO {
 	PreparedStatement psmt;
 	ResultSet rs;
 
+	private String url;
+
 	public ChatDAO() {
 
 	}
 
 	public void conn() {
+		int menu = 2;
+		if (menu == 1) {
+			url = "jdbc:oracle:thin:@192.168.0.14:1521:xe";
+		} else {
+			url = "jdbc:oracle:thin:@localhost:1521:xe";
+		}
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.14:1521:xe", "hr", "hr");
+			conn = DriverManager.getConnection(url, "hr", "hr");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -52,7 +60,7 @@ public class ChatDAO {
 	public List<Employee> getList() {
 		conn();
 		List<Employee> list = new ArrayList<>();
-		String sql = "select * from employees order by 1";
+		String sql = "select * from emp_temp order by 1";
 		try {
 			conn.setAutoCommit(false);
 			psmt = conn.prepareStatement(sql);
@@ -71,21 +79,92 @@ public class ChatDAO {
 		return list;
 	}
 
-//	public boolean addChat(Employee vo) {
-//		conn();
-//		String sql = "insert into chatting(seq, content, writer, creation_date) values(chat_seq.nextval,?,?,sysdate)";
-//
-//		try {
-//			psmt = conn.prepareStatement(sql);
-//			psmt.setString(1, vo.getContent());
-//			psmt.setString(2, vo.getWriter());
-//			psmt.executeUpdate();
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			disconn();
-//		}
-//		return false;
-//	}
+	public Employee getEmpl(int eId) {
+		conn();
+		String sql = "select * from emp_temp where employee_id = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, eId);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				Employee emp = new Employee(rs.getInt("employee_id"), rs.getString("first_name"),
+						rs.getString("last_name"), rs.getString("email"), rs.getString("hire_date"),
+						rs.getString("job_id"));
+				return emp;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconn();
+		}
+		return null;
+	}
+
+	public boolean delEmp(int eId) {
+		conn();
+		String sql = "delete from emp_temp where employee_id = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, eId);
+			int r = psmt.executeUpdate();
+			if (r > 0)
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconn();
+		}
+		return false;
+
+	}
+
+	public boolean addEmp(Employee emp) {
+		conn();
+		String sql = "insert into emp_temp(employee_id, first_name, last_name, email, hire_date, job_id) "//
+				+ " values(employees_seq.nextval,?,?,?,?,?)";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, emp.getFirstName());
+			psmt.setString(2, emp.getLastName());
+			psmt.setString(3, emp.getEmail());
+			psmt.setString(4, emp.getHireDate());
+			psmt.setString(5, emp.getJobId());
+
+			int r = psmt.executeUpdate();
+			if (r > 0)
+				return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconn();
+		}
+		return false;
+
+	}
+
+	public boolean modEmp(Employee emp) {
+		conn();
+		String sql = "update emp_temp set first_name=?, last_name=?, email=?, hire_date=?, job_id=? where employee_id=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, emp.getFirstName());
+			psmt.setString(2, emp.getLastName());
+			psmt.setString(3, emp.getEmail());
+			psmt.setString(4, emp.getHireDate());
+			psmt.setString(5, emp.getJobId());
+			psmt.setInt(6, emp.getEmployeeId());
+
+			int r = psmt.executeUpdate();
+			if (r > 0)
+				return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconn();
+		}
+		return false;
+	}
+
 }

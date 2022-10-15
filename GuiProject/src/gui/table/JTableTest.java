@@ -12,6 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -20,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class JTableTest extends JFrame implements MouseListener, KeyListener {
 
-	private final String[] labels = { "Name", "Age", "Sex", "Korean", "English", "Math" };
+	private final String[] labels = { "사원번호", "이름", "성씨", "이메일", "입사일자", "직무" };
 	private JTextField[] fields = new JTextField[6];
 
 	private JScrollPane scrolledTable;
@@ -28,6 +29,8 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 
 	private JButton addBtn;
 	private JButton delBtn;
+
+	ChatDAO dao = new ChatDAO();
 
 	public JTableTest(String title) {
 
@@ -45,7 +48,7 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 		this.add("North", topPanel); // 가장 위쪽 Panel 설정
 
 		// table 구성.
-		String header[] = { "Name", "Age", "Sex", "Korean", "English", "Math" };
+		String header[] = { "사원번호", "이름", "성씨", "이메일", "입사일자", "직무" };
 		DefaultTableModel model = new DefaultTableModel(header, 0); // header추가, 행은 0개 지정
 
 		table = new JTable(model);
@@ -53,18 +56,17 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 		scrolledTable.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 너무 붙어있어서 가장자리 띄움(padding)
 
 		// 데이터 로딩.
-//		ChatDAO dao = new ChatDAO();
-//		List<Employee> list = dao.getList();
-//		String[] record = new String[6];
-//		for (Employee emp : list) {
-//			record[0] = String.valueOf(emp.getEmployeeId());
-//			record[1] = emp.getFirstName();
-//			record[2] = emp.getLastName();
-//			record[3] = emp.getEmail();
-//			record[4] = emp.getHireDate();
-//			record[5] = emp.getJobId();
-//			model.addRow(record);
-//		}
+		List<Employee> list = dao.getList();
+		String[] record = new String[6];
+		for (Employee emp : list) {
+			record[0] = String.valueOf(emp.getEmployeeId());
+			record[1] = emp.getFirstName();
+			record[2] = emp.getLastName();
+			record[3] = emp.getEmail();
+			record[4] = emp.getHireDate();
+			record[5] = emp.getJobId();
+			model.addRow(record);
+		}
 
 		this.add("Center", scrolledTable); // 가운데에 JTable 추가
 
@@ -117,6 +119,11 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 			}
 			record[i] = fields[i].getText();
 		}
+		Employee emp = new Employee(Integer.parseInt(record[0]), record[1], record[2], record[3], record[4], record[5]);
+		if (!dao.addEmp(emp)) {
+			JOptionPane.showMessageDialog(null, "저장 중 에러", "경고창", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
 		model.addRow(record);
 
 		// 모든 TextField 비우기
@@ -129,6 +136,23 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 	public void printCell(int row, int col) {
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		System.out.println(model.getValueAt(row, col));
+		System.out.println(model.getValueAt(row, 0));
+
+		int selectedId = Integer.parseInt((String) model.getValueAt(row, 0));
+		Employee emp = dao.getEmpl(selectedId);
+
+		showDetail(emp);
+
+	}
+
+	public void showDetail(Employee emp) {
+		fields[0].setText(String.valueOf(emp.getEmployeeId()));
+		fields[1].setText(emp.getFirstName());
+		fields[2].setText(emp.getLastName());
+		fields[3].setText(emp.getEmail());
+		fields[4].setText(emp.getHireDate());
+		fields[5].setText(emp.getJobId());
+
 	}
 
 	// MouseListener Overrides
@@ -153,27 +177,33 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		System.out.println("mousePressed");
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		System.out.println("mouseReleased");
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
+		System.out.println("mouseEntered");
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		System.out.println("mouseExited");
 	}
 
 	// KeyListener Overrides
 	@Override
 	public void keyTyped(KeyEvent e) {
+		System.out.println("keyTyped");
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		System.out.println("keyPressed");
 	}
 
 	@Override
