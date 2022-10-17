@@ -20,7 +20,7 @@ public class ChatDAO {
 	}
 
 	public void conn() {
-		int menu = 1;
+		int menu = 2;
 		if (menu == 1) {
 			url = "jdbc:oracle:thin:@192.168.0.14:1521:xe";
 		} else {
