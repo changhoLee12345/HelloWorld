@@ -37,17 +37,14 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 	private JTable table;
 	private List<JButton> pageBtns;
 
-	private JButton addBtn;
-	private JButton delBtn;
-	private JButton findBtn;
-	private JButton initBtn;
+	private JButton addBtn, delBtn, findBtn, initBtn, msgBtn;
 	private JLabel showPage;
 
 	// 현재페이지 정보를 갖고 데이터의 변경이 잇을때마다 현재페이지를 기준으로 보여주도록 하려고.
 	int currentPage = 1;
 	int lastPage = 100;
 
-	ChatDAO dao = new ChatDAO();
+	EmpDAO dao = new EmpDAO();
 	List<Employee> list;
 
 	public JTableTest(String title) {
@@ -84,12 +81,14 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 			delBtn = new JButton("레코드 삭제");
 			findBtn = new JButton("레코드 조회");
 			initBtn = new JButton("입력항목 초기화");
+			msgBtn = new JButton("메세지화면");
 			showPage = new JLabel("Page: 1");
 
 			rightPanel.add(addBtn);
 			rightPanel.add(delBtn);
 			rightPanel.add(findBtn);
 			rightPanel.add(initBtn);
+			rightPanel.add(msgBtn);
 			rightPanel.add(showPage);
 			rightPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -115,6 +114,8 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 			delBtn.addMouseListener(this); // 삭제 처리
 			findBtn.addMouseListener(this);// 조회 처리
 			initBtn.addMouseListener(this); // 초기화 처리
+			msgBtn.addMouseListener(this); // 메세지화면으로 이동
+
 			for (int i = 0; i < 6; i++) // 엔터 처리
 				fields[i].addKeyListener(this);
 			table.addMouseListener(this); // 셀 읽기 처리
@@ -309,6 +310,11 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 
 		if (src == initBtn)
 			initField();
+
+		if (src == msgBtn) {
+			new MailScreen();
+			dispose();
+		}
 
 		if (src == table) {
 			int row = table.getSelectedRow();

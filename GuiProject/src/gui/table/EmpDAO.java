@@ -8,14 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatDAO {
+public class EmpDAO {
 	Connection conn;
 	PreparedStatement psmt;
 	ResultSet rs;
 
 	private String url;
 
-	public ChatDAO() {
+	public EmpDAO() {
 
 	}
 
