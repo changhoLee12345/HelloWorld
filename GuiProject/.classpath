@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/ubuntie/Dev/ojdbc8-12.2.0.1.jar"/>
-	<classpathentry kind="lib" path="/home/ubuntie/Dev/mail-1.4.7.jar"/>
-	<classpathentry kind="lib" path="/home/ubuntie/Dev/activation-1.1.1.jar"/>
-	<classpathentry kind="lib" path="/home/ubuntie/Dev/sendgrid-java.jar"/>
-	<classpathentry kind="lib" path="/home/ubuntie/Dev/javaSDK-2.2.jar"/>
-	<classpathentry kind="lib" path="/home/ubuntie/Dev/json-simple-1.1.1.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/home/homie/Dev/ojdbc8-12.2.0.1.jar"/>
+	<classpathentry kind="lib" path="/home/homie/Dev/mail-1.4.7.jar"/>
+	<classpathentry kind="lib" path="/home/homie/Dev/activation-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/homie/Dev/javaSDK-2.2.jar"/>
+	<classpathentry kind="lib" path="/home/homie/Dev/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

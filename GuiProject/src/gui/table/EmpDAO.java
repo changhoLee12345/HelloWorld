@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EmpDAO {
 	Connection conn;
@@ -179,4 +181,21 @@ public class EmpDAO {
 		return false;
 	}
 
+	public Map<String, String> getJobList() {
+		conn();
+		Map<String, String> jobList = new HashMap<>();
+		String sql = "SELECT job_id, JOB_TITLE FROM jobs ORDER BY 1";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				jobList.put(rs.getString("job_id"), rs.getString("job_title"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconn();
+		}
+		return jobList;
+	}
 }

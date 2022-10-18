@@ -1,7 +1,7 @@
 package gui.table;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
@@ -10,9 +10,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -37,8 +41,9 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 	private JTable table;
 	private List<JButton> pageBtns;
 
-	private JButton addBtn, delBtn, findBtn, initBtn, msgBtn;
+	private JButton addBtn, delBtn, findBtn, initBtn;// , msgBtn;
 	private JLabel showPage;
+	private JComboBox<String> jobList;
 
 	// 현재페이지 정보를 갖고 데이터의 변경이 잇을때마다 현재페이지를 기준으로 보여주도록 하려고.
 	int currentPage = 1;
@@ -48,6 +53,9 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 	List<Employee> list;
 
 	public JTableTest(String title) {
+
+		setTitle("사원정보 관리화면");
+
 		// table 구성.
 		String header[] = { "사원번호", "이름", "성씨", "이메일", "입사일자", "직무" };
 		DefaultTableModel model = new DefaultTableModel(header, 0); // header추가, 행은 0개 지정
@@ -57,11 +65,29 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 		{// 위쪽 입력 값 등록. topPanel.
 			topPanel = new JPanel(new GridLayout(6, 4, 10, 5));
 
-			for (int i = 0; i < 6; i++) {
+			for (int i = 0; i < labels.length; i++) {
 				topPanel.add(new JLabel(labels[i]));
+				// 마지막입력값은 텍스트필드가 아니고 콤보박스로 하기때문에..수정해야함.
+				if (i == 5) {
+					break;
+				}
 				fields[i] = new JTextField(30);
 				topPanel.add(fields[i]);
 			}
+
+			// JOB은 데이터 조회 후 Combobox에 추가.
+			Map<String, String> map = dao.getJobList();
+			Set<Entry<String, String>> entset = map.entrySet();
+			String[] jlist = new String[map.size() + 1];
+			int i = 0;
+			jlist[i++] = "";
+			for (Entry ent : entset) {
+				jlist[i++] = (String) ent.getKey();
+			}
+			JLabel job2 = new JLabel("직무2");
+			jobList = new JComboBox<String>(jlist);
+			topPanel.add(jobList);
+
 			topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 			this.add("North", topPanel); // 가장 위쪽 Panel 설정
 		}
@@ -75,20 +101,20 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 		}
 
 		{// 추가, 삭제, 조회 버튼. rightPanel.
-			rightPanel = new JPanel(new GridLayout(5, 1, 10, 10));
+			rightPanel = new JPanel(new GridLayout(5, 1));
 
 			addBtn = new JButton("레코드 추가");
 			delBtn = new JButton("레코드 삭제");
 			findBtn = new JButton("레코드 조회");
 			initBtn = new JButton("입력항목 초기화");
-			msgBtn = new JButton("메세지화면");
+//			msgBtn = new JButton("메세지화면");
 			showPage = new JLabel("Page: 1");
 
 			rightPanel.add(addBtn);
 			rightPanel.add(delBtn);
 			rightPanel.add(findBtn);
 			rightPanel.add(initBtn);
-			rightPanel.add(msgBtn);
+//			rightPanel.add(msgBtn);
 			rightPanel.add(showPage);
 			rightPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -114,10 +140,16 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 			delBtn.addMouseListener(this); // 삭제 처리
 			findBtn.addMouseListener(this);// 조회 처리
 			initBtn.addMouseListener(this); // 초기화 처리
-			msgBtn.addMouseListener(this); // 메세지화면으로 이동
+//			msgBtn.addMouseListener(this); // 메세지화면으로 이동
 
-			for (int i = 0; i < 6; i++) // 엔터 처리
+			for (int i = 0; i < labels.length; i++) { // 엔터 처리
+				if (i == 5) {
+					jobList.setSelectedIndex(0);
+					break;
+				}
 				fields[i].addKeyListener(this);
+
+			}
 			table.addMouseListener(this); // 셀 읽기 처리
 		}
 
@@ -136,7 +168,8 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 		String lastName = fields[2].getText();
 		String email = fields[3].getText();
 		String hireDate = fields[4].getText();
-		String jobId = fields[5].getText();
+//		String jobId = fields[5].getText();
+		String jobId = (String) jobList.getSelectedItem();
 
 		Employee emp = new Employee(empId, firstName, lastName, email, hireDate, jobId);
 		list = dao.getList(emp);
@@ -238,7 +271,10 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 	private void addRecord() {
 //		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		String[] record = new String[6];
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < labels.length; i++) {
+			if (i == 5) {
+				break;
+			}
 			if (isInvalidInput(fields[i].getText())) {
 				System.out.println("Invalid Input");
 				return;
@@ -259,8 +295,12 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 
 	// 입력항목 초기화
 	private void initField() {
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < labels.length; i++) {
+			if (i == 5) {
+				break;
+			}
 			fields[i].setText("");
+		}
 
 		fields[0].requestFocus();
 	}
@@ -311,10 +351,10 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 		if (src == initBtn)
 			initField();
 
-		if (src == msgBtn) {
-			new MailScreen();
-			dispose();
-		}
+//		if (src == msgBtn) {
+//			new MailScreen();
+//			dispose();
+//		}
 
 		if (src == table) {
 			int row = table.getSelectedRow();

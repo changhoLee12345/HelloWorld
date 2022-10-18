@@ -13,8 +13,8 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class SmsApp {
 //	public static void main(String[] args) {
 	public String sendMsg(String from, String to, String content) {
-		String api_key = "api_key";
-		String api_secret = "api_secret";
+		String api_key = "NCS2A3AMMIRSXL9U";
+		String api_secret = "CPOTATISTYLH36ETZMKWZ0TZZNI94QF2";
 		Message coolsms = new Message(api_key, api_secret);
 
 		// 4 params(to, from, type, text) are mandatory. must be filled

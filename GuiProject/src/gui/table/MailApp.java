@@ -13,8 +13,8 @@ import javax.mail.internet.MimeUtility;
 public class MailApp {
 
 	public String sendMail(String from, String to, String subject, String content) {
-		String _email = "mail id";
-		String _password = "mail pass";
+		String _email = "";
+		String _password = "";
 
 		System.out.println("Start JavaMail API Test ~!");
 
