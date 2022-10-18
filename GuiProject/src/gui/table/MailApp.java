@@ -19,9 +19,9 @@ public class MailApp {
 		System.out.println("Start JavaMail API Test ~!");
 
 //		String subject = "Hello JavaMail API Test";
-		String fromMail = from;// "cholee@yedam.ac";
+		String fromMail = from;
 		String fromName = "Charles";
-		String toMail = to;// "leadon@naver.com"; // 콤마(,) 나열 가능
+		String toMail = to; // 콤마(,) 나열 가능
 
 		// mail contents
 		StringBuffer contents = new StringBuffer();
@@ -46,9 +46,8 @@ public class MailApp {
 		try {
 			MimeMessage message = new MimeMessage(mailSession);
 
-			message.setFrom(new InternetAddress(fromMail, MimeUtility.encodeText(fromName, "UTF-8", "B"))); // 한글의 경우
-																											// encoding
-																											// 필요
+			// 한글의 경우 encoding 필요
+			message.setFrom(new InternetAddress(fromMail, MimeUtility.encodeText(fromName, "UTF-8", "B")));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toMail));
 			message.setSubject(subject);
 			message.setContent(content, "text/html;charset=UTF-8"); // 내용 설정 (HTML 형식)
@@ -61,10 +60,12 @@ public class MailApp {
 
 			System.out.println("Done Done ~!");
 			return "Success";
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "Fail";
 		}
+
 	}
 
 }
