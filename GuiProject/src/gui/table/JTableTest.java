@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
 public class JTableTest extends JFrame implements MouseListener, KeyListener {
@@ -63,7 +64,10 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 		this.setLayout(new BorderLayout(10, 10));
 
 		{// 위쪽 입력 값 등록. topPanel.
-			topPanel = new JPanel(new GridLayout(6, 4, 10, 5));
+			Border border = BorderFactory.createTitledBorder("항목");
+			topPanel = new JPanel(new GridLayout(6, 4, 5, 5));
+//			topPanel.setPreferredSize(new Dimension(300, 180));
+			topPanel.setBorder(border);
 
 			for (int i = 0; i < labels.length; i++) {
 				topPanel.add(new JLabel(labels[i]));
