@@ -1,6 +1,8 @@
 package co.yedam.memo;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 
@@ -30,7 +32,10 @@ public class Memo implements Serializable {
 
 	public Memo(String content) {
 		// 오늘날짜를 스트링으로 변환
-		String date = "";
+		Date today = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		String date = sdf.format(today);
 		this.date = date;
 		this.content = content;
 	}

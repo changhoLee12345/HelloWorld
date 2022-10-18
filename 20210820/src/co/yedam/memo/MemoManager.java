@@ -68,25 +68,24 @@ public class MemoManager {
 		System.out.println("일치하는 번호가 없습니다.");
 	}
 
+	@SuppressWarnings("unchecked")
 	public void readFromFile() {
-		try {
+		try (FileInputStream fis = new FileInputStream(file); ObjectInputStream ois = new ObjectInputStream(fis);) {
 			if (!file.exists())
 				return;
-			FileInputStream fis = new FileInputStream(file);
-			ObjectInputStream ois = new ObjectInputStream(fis);
+
 			memoStorage = (ArrayList<Memo>) ois.readObject();
 			System.out.println(memoStorage);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void storeToFile() {
-		try {
-			FileOutputStream fos = new FileOutputStream(file);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
+		try (FileOutputStream fos = new FileOutputStream(file); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
 			oos.writeObject(memoStorage);
-			oos.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

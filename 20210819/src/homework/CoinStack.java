@@ -1,7 +1,6 @@
 package homework;
 
 import java.util.LinkedList;
-import co.yedam.collect.Coin;
 
 /*  LinkedList로 스택을 구현
  *  */
