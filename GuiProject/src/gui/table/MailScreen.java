@@ -9,12 +9,16 @@ import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class MailScreen extends JFrame implements ActionListener {
+
+	MyMenu menu = new MyMenu(this);
+	JMenuBar mainBar = menu.menuBar();
 
 	Dimension lblDim = new Dimension(65, 15); // 제목이 긴 라벨에 적용.
 	Dimension lblDim2 = new Dimension(45, 15); // 제목이 짧은 라벨에 적용.
@@ -30,6 +34,9 @@ public class MailScreen extends JFrame implements ActionListener {
 	MailApp app = new MailApp();
 
 	public MailScreen() {
+
+		setJMenuBar(mainBar);
+
 		setTitle("메세지 보내기");
 		setSize(340, 300);
 		setLayout(new BorderLayout());
@@ -114,12 +121,30 @@ public class MailScreen extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
+		if (src == menu.miEmp) {
+			new JTableTest("");
+			dispose();
+
+		} else if (src == menu.miSms) {
+			new SmsScreen();
+			dispose();
+
+		} else if (src == menu.miMail) {
+			new MailScreen();
+			dispose();
+
+		} else if (src == menu.miExit) {
+			System.exit(0);
+
+//		} else if (src == menu.miCopy) {
+
+//		} else if (src == menu.miPaste) {
+
+		}
 
 		if (src == sendBtn) {
 			mailing();
-		}
-
-		if (src == empBtn) {
+		} else if (src == empBtn) {
 			new JTableTest("");
 			dispose();
 		}

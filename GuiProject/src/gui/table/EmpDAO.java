@@ -63,8 +63,8 @@ public class EmpDAO {
 		conn();
 		List<Employee> list = new ArrayList<>();
 		String sql = "select * from emp_temp";
-		sql += " where employee_id=decode(?, 0, employee_id, ?) and first_name like '%'||?||'%' and last_name like '%'||?||'%' and email like '%'||?||'%' ";
-		sql += " and to_char(hire_date, 'yyyy-mm-dd') like '%'||?||'%' and job_id = nvl(?, job_id) ";
+		sql += " where employee_id=decode(?, 0, employee_id, ?) and first_name like '%'||?||'%' and last_name like '%'||?||'%' ";
+		sql += "and email like '%'||?||'%' and to_char(hire_date, 'yyyy-mm-dd') like '%'||?||'%' and job_id = nvl(?, job_id) ";
 		sql += "order by 1";
 		try {
 			conn.setAutoCommit(false);
@@ -79,9 +79,9 @@ public class EmpDAO {
 
 			rs = psmt.executeQuery();
 			while (rs.next()) {
-				Employee vo = new Employee(rs.getInt("employee_id"), rs.getString("first_name"),
-						rs.getString("last_name"), rs.getString("email"), rs.getString("hire_date"),
-						rs.getString("job_id"));
+				Employee vo = new Employee(rs.getInt("employee_id"), rs.getString("first_name"), //
+						rs.getString("last_name"), rs.getString("email"), //
+						rs.getString("hire_date"), rs.getString("job_id"));
 				list.add(vo);
 			}
 		} catch (SQLException e) {

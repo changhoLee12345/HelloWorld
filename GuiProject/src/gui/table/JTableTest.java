@@ -1,9 +1,10 @@
 package gui.table;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -19,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -27,9 +29,12 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
-public class JTableTest extends JFrame implements MouseListener, KeyListener {
+public class JTableTest extends JFrame implements ActionListener, MouseListener, KeyListener {
 
 	private static final long serialVersionUID = 1L;
+
+	MyMenu menu = new MyMenu(this);
+	JMenuBar mainBar = menu.menuBar();
 
 	private final String[] labels = { "사원번호", "이름", "성씨", "이메일", "입사일자", "직무" };
 	private JTextField[] fields = new JTextField[6];
@@ -54,6 +59,8 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 	List<Employee> list;
 
 	public JTableTest(String title) {
+
+		setJMenuBar(mainBar);
 
 		setTitle("사원정보 관리화면");
 
@@ -332,33 +339,56 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+
+		if (src == menu.miEmp) {
+			new JTableTest("");
+			dispose();
+
+		} else if (src == menu.miSms) {
+			new SmsScreen();
+			dispose();
+
+		} else if (src == menu.miMail) {
+			new MailScreen();
+			dispose();
+
+		} else if (src == menu.miExit) {
+			System.exit(0);
+
+//		} else if (src == menu.miCopy) {
+
+//		} else if (src == menu.miPaste) {
+
+		}
+
+		if (src == addBtn) {
+			addRecord();
+			setPageBtn();
+		} else if (src == delBtn) {
+			int selected = table.getSelectedRow();
+			removeRecord(selected);
+
+		} else if (src == findBtn) {
+			setPageBtn();
+			paging(searchData(), 1);
+		} else if (src == initBtn) {
+			initField();
+
+//			 else if (src == msgBtn) {
+//			new MailScreen();
+//			dispose();
+
+		}
+
+	}
+
 	// MouseListener Overrides 이벤트처리.
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		Object src = e.getSource();
-		if (src == addBtn) {
-			addRecord();
-			setPageBtn();
-		}
-
-		if (src == delBtn) {
-			int selected = table.getSelectedRow();
-			removeRecord(selected);
-
-		}
-
-		if (src == findBtn) {
-			setPageBtn();
-			paging(searchData(), 1);
-		}
-
-		if (src == initBtn)
-			initField();
-
-//		if (src == msgBtn) {
-//			new MailScreen();
-//			dispose();
-//		}
 
 		if (src == table) {
 			int row = table.getSelectedRow();
@@ -416,4 +446,5 @@ public class JTableTest extends JFrame implements MouseListener, KeyListener {
 	public static void main(String[] args) {
 		new JTableTest("test");
 	}
+
 }

@@ -8,12 +8,16 @@ import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class SmsScreen extends JFrame implements ActionListener {
+
+	MyMenu menu = new MyMenu(this);
+	JMenuBar mainBar = menu.menuBar();
 
 	JPanel center, bottom;
 	JLabel from, to, content;
@@ -22,6 +26,9 @@ public class SmsScreen extends JFrame implements ActionListener {
 	JButton ok, cancel;
 
 	public SmsScreen() {
+
+		setJMenuBar(mainBar);
+
 		setTitle("문자 발송  UI");
 		setSize(300, 320);
 		setLayout(new BorderLayout());
@@ -72,10 +79,30 @@ public class SmsScreen extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
+		if (src == menu.miEmp) {
+			new JTableTest("");
+			dispose();
+
+		} else if (src == menu.miSms) {
+			new SmsScreen();
+			dispose();
+
+		} else if (src == menu.miMail) {
+			new MailScreen();
+			dispose();
+
+		} else if (src == menu.miExit) {
+			System.exit(0);
+
+//		} else if (src == menu.miCopy) {
+
+//		} else if (src == menu.miPaste) {
+
+		}
+
 		if (src == ok) {
 			sendSms();
-		}
-		if (src == cancel) {
+		} else if (src == cancel) {
 
 		}
 	}
