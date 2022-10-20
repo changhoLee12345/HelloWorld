@@ -367,6 +367,7 @@ public class JTableTest extends JFrame implements ActionListener, MouseListener,
 		if (src == addBtn) {
 			addRecord();
 			setPageBtn();
+
 		} else if (src == delBtn) {
 			int selected = table.getSelectedRow();
 			removeRecord(selected);
@@ -374,6 +375,7 @@ public class JTableTest extends JFrame implements ActionListener, MouseListener,
 		} else if (src == findBtn) {
 			setPageBtn();
 			paging(searchData(), 1);
+
 		} else if (src == initBtn) {
 			initField();
 
