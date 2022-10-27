@@ -18,7 +18,7 @@ public class AutoRun implements ServletContextListener {
 			public void run() {
 				System.out.println(new Date().toString());
 			}
-		}, 0, 1000 * 10);
+		}, 0, 1000 * 60 * 10);
 	}
 
 	@Override
