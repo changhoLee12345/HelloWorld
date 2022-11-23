@@ -22,9 +22,9 @@ public class EmpDAO {
 	}
 
 	public void conn() {
-		int menu = 2;
+		int menu = 1;
 		if (menu == 1) {
-			url = "jdbc:oracle:thin:@192.168.0.14:1521:xe";
+			url = "jdbc:oracle:thin:@129.154.204.142:1521:xe";
 		} else {
 			url = "jdbc:oracle:thin:@localhost:1521:xe";
 		}
