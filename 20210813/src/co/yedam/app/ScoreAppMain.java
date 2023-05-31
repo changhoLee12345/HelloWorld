@@ -10,18 +10,18 @@ public class ScoreAppMain {
 		kor[2] = 90;
 		kor[3] = 50;
 		kor[4] = 80;
-		
-		//전체 성적 조회
-		for(int i=0; i<kor.length; i++) {
+
+		// 전체 성적 조회
+		for (int i = 0; i < kor.length; i++) {
 			System.out.println(kor[i]);
 		}
-		
+
 		System.out.println("향상된 for문 사용");
-		for( int  temp : kor) {
+		for (int temp : kor) {
 			System.out.println(temp);
 		}
-		
-		//국어성적 합계 계산
-		
+
+		// 국어성적 합계 계산
+
 	}
 }
