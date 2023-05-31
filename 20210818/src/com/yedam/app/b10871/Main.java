@@ -24,6 +24,8 @@ public class Main {
 		System.out.println(x);
 		System.out.println(arr1[0]);
 		System.out.println(arr1.length);*/
+		
+		scanner.close();
 	}
 
 }
