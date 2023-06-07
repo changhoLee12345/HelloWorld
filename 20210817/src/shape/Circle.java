@@ -1,17 +1,19 @@
 package shape;
 
-public class Circle 
-      extends Shape implements Drawable, Movable{
+public class Circle extends Shape implements Drawable, Movable {
 	private int r;
 
-	public Circle(){}
-	
+	public Circle() {
+	}
+
 	public Circle(String color) {
 		setColor(color);
 	}
+
 	public int getR() {
 		return r;
 	}
+
 	public void setR(int r) {
 		this.r = r;
 	}
