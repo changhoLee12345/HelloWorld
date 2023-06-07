@@ -1,16 +1,19 @@
-package 다형성;
+package polimorphism;
 
-public class Circle extends Shape{
+public class Circle extends Shape {
 	private int r;
 
-	public Circle(){}
-	
+	public Circle() {
+	}
+
 	public Circle(String color) {
 		setColor(color);
 	}
+
 	public int getR() {
 		return r;
 	}
+
 	public void setR(int r) {
 		this.r = r;
 	}
