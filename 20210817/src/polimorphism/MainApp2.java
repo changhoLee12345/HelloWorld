@@ -1,4 +1,4 @@
-package 다형성;
+package polimorphism;
 
 public class MainApp2 {
 
