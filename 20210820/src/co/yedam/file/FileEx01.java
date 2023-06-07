@@ -54,6 +54,7 @@ public class FileEx01 {
 		Student s1 = new Student("park", 22);
 
 		try {
+			
 			FileOutputStream fos = new FileOutputStream(new File("object.bin"));
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(students);
@@ -66,6 +67,7 @@ public class FileEx01 {
 			}
 			fos.close();oos.close();
 			fis.close();ois.close();
+			
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
