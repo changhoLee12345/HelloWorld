@@ -10,7 +10,9 @@ public class MemoExe {
 		int choice;
 
 		while (true) {
-//			showMenu();
+			System.out.println("1.추가 2.수정 3.삭제 4.조회 5.전체조회 6.종료");
+			System.out.print("선택> ");
+
 			choice = MenuViewer.keyboard.nextInt();
 			MenuViewer.keyboard.nextLine();
 
