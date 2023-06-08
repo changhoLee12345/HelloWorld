@@ -1,6 +1,8 @@
 package listTest;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ListApp {
 
@@ -39,6 +41,10 @@ public class ListApp {
 		System.out.println(list);
 		list.clear();
 		System.out.println(list);
+
+		SimpleDateFormat sdf = new SimpleDateFormat();
+		
+		System.out.println(sdf.format(new Date()));
 
 	}
 

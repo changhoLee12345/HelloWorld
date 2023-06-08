@@ -26,31 +26,26 @@ public class MemoListImpl implements MemoList {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void delete(int no) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void delete(String date) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void search(int no) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void search(String date) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -61,7 +56,6 @@ public class MemoListImpl implements MemoList {
 
 	@Override
 	public void searchContent(String content) {
-		// TODO Auto-generated method stub
 
 	}
 
