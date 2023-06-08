@@ -16,12 +16,13 @@ public class Main {
 		}
 		System.out.println(arr[n - 1]);
 
-		/*
-		 * String in = scanner.nextLine(); String[] arr1= in.split(" ");
-		 * 
-		 * System.out.println(n); System.out.println(x); System.out.println(arr1[0]);
-		 * System.out.println(arr1.length);
-		 */
+		String in = scanner.nextLine();
+		String[] arr1 = in.split(" ");
+
+		System.out.println(n);
+		System.out.println(x);
+		System.out.println(arr1[0]);
+		System.out.println(arr1.length);
 
 		scanner.close();
 	}
