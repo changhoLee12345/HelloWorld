@@ -19,7 +19,7 @@ public class StringTest {
 		String year = ssn.substring(0, 2);
 		System.out.println("년도: " + year);
 
-		String fname = "c:/images/2021/home.png";
+		String fname = "c:/images/2021/sample.png";
 
 		// 확장자
 		// int idx = fname.indexOf(".");
@@ -35,8 +35,8 @@ public class StringTest {
 
 		// 치환
 		String result = fname.replace("2021", "2020");
-		System.out.println(fname);
-		System.out.println(result);
+		System.out.println("replace1: " + fname);
+		System.out.println("replace1: " + result);
 
 		// 스트링 비교
 		String s1 = "hello";
@@ -53,6 +53,6 @@ public class StringTest {
 		sb.replace(0, 2, "happy");
 		System.out.println(sb);
 		String str = sb.toString();
-
+		System.out.println("str: " + str);
 	}
 }

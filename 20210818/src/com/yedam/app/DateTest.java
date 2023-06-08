@@ -50,9 +50,10 @@ public class DateTest {
 		System.out.println(ddate);
 
 		// static 메서드 호출
-		System.out.println("static:" + DateUtil.dateToStr(today));
-		System.out.println("static:" + DateUtil.dateToStr(today, "yyyy"));
+		System.out.println("static: " + DateUtil.dateToStr(today));
+		System.out.println("static: " + DateUtil.dateToStr(today, "yyyy"));
 
 		Date date3 = DateUtil.strToDate("2021/08/10");
+		System.out.println("date3: " + date3);
 	}
 }
