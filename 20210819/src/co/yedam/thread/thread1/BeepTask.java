@@ -1,4 +1,4 @@
-package co.yedam.thread;
+package co.yedam.thread.thread1;
 
 import java.awt.Toolkit;
 

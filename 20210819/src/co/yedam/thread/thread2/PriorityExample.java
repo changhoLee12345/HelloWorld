@@ -1,4 +1,4 @@
-package co.yedam.thread;
+package co.yedam.thread.thread2;
 
 /*
  * 쓰레드의 우선순위 지정.

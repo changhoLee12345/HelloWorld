@@ -1,4 +1,4 @@
-package co.yedam.thread;
+package co.yedam.thread.thread2;
 
 class ThreadA extends Thread {
 	public ThreadA() {
@@ -28,11 +28,9 @@ public class ThreadNameExample {
 	public static void main(String[] args) {
 		Thread threadA = new ThreadA();
 		threadA.start();
-		
+
 		Thread threadB = new ThreadB();
 		threadB.start();
-		
-		
 
 	}
 }
