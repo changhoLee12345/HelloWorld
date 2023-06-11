@@ -34,6 +34,20 @@ public class SetTest {
 		if (set.isEmpty()) {
 			System.out.println("비었음");
 		}
+
+		Set<Integer> arySet = new HashSet<>();
+		while (arySet.size() < 5) {
+			int r = (int) (Math.random() * 10 + 1);
+			arySet.add(r);
+		}
+		int[] intAry = new int[5];
+		int i = 0;
+		for (Integer in : arySet) {
+			intAry[i++] = in;
+		}
+		for (int in : intAry) {
+			System.out.println("in: " + in);
+		}
 	}
 
 }

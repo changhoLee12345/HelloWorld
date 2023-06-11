@@ -38,5 +38,14 @@ public class WrapperTest {
 		String r2 = Integer.toOctalString(e);
 		System.out.println(r1 + ":" + r2);
 
+		// 4.
+		Integer i3 = new Integer(128);
+		byte b3 = i3.byteValue();
+//		b3 = (byte) i3;
+		System.out.println("b3: " + b3);
+
+		((Integer) 3).intValue();
+		Byte.valueOf("3").byteValue();
+
 	}
 }

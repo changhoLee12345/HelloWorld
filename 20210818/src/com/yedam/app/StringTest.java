@@ -4,6 +4,13 @@ public class StringTest {
 
 	public static void main(String[] args) {
 
+		// 현재 시간을 yyyy/MM/dd hh:mm:ss 로 출력.
+		// 주민번호를 받아서 성별을 구별하는 프로그램.
+		// 년단위, 월단위, 일 단위의 값이 정상적인지.
+		// 9501231234567, 950405 2345678, 980102-1345678 : 13자리가 아니면 오류발생.
+		// 파일의 이름과 확장자를 구하는 코드.
+		// 문자찾기.
+
 		String ssn = "901210-1231234";
 
 		Object obj = new Object();
