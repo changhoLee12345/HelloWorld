@@ -133,11 +133,13 @@ public class PhoneBookManager {
 		try {
 			FileOutputStream file = new FileOutputStream(dataFile);
 
+//			1.Object 저장.
 //			ObjectOutputStream out = new ObjectOutputStream(file);
 //			Iterator<PhoneInfo> itr = infoStorage.iterator();
 //			while (itr.hasNext())
 //				out.writeObject(itr.next());
 
+//			2.FileWriter 저장.
 			FileWriter out = new FileWriter(dataFile);
 			Iterator<PhoneInfo> itr = infoStorage.iterator();
 			while (itr.hasNext()) {
@@ -154,7 +156,7 @@ public class PhoneBookManager {
 			return;
 
 		try {
-
+//			1.Object 읽기.
 //			FileInputStream file = new FileInputStream(dataFile);
 //			ObjectInputStream in = new ObjectInputStream(file);
 //
@@ -165,6 +167,7 @@ public class PhoneBookManager {
 //				infoStorage.add(info);
 //			}
 
+//			2.FileReader 읽기.
 			FileReader reader = new FileReader(dataFile);// reader.read()
 			BufferedReader in = new BufferedReader(reader);
 			String string;

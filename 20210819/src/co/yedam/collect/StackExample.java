@@ -25,7 +25,8 @@ public class StackExample {
 		coinBox.push(new Coin(60));
 		coinBox.push(new Coin(50));
 		coinBox.push(new Coin(80));
-
+		
+		System.out.println(coinBox.peek().getValue());
 		while (!coinBox.isEmpty()) {
 			Coin coin = coinBox.pop();
 			System.out.println(coin.getValue());

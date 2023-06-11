@@ -12,8 +12,8 @@ class CalcThread extends Thread {
 
 	@Override
 	public void run() {
-		for (int i = 0; i < 2000000000; i++) {
-			if (i % 100000000 == 0)
+		for (int i = 0; i < 20000000; i++) {
+			if (i % 1000000 == 0)
 				try {
 					Thread.sleep(1);
 				} catch (InterruptedException e) {
