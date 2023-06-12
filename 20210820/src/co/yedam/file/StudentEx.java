@@ -1,8 +1,8 @@
 package co.yedam.file;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,51 +10,55 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class StudentEx {
-	public static void main(String[] args) throws IOException {
+	static String fileName = "C:/temp/sample.txt";
 
-		InputStream is = new FileInputStream("/home/linuxie/Dev/sample.txt");
-		InputStreamReader isr = new InputStreamReader(is);
-		char[] buf = new char[100];
-		int readBuf = 0;
-		int sum = 0, maxScore = 0;
-		String name = "";
-//		while ((readBuf = isr.read(buf)) != -1) {
-		isr.read(buf);
-		String readLine = new String(buf, 0, buf.length);
-		System.out.println(readLine);
-		String[] values = readLine.split("\n");
-		System.out.println(values.length);
-		for (int i = 0; i < values.length; i++) {
-//				System.out.println(line);
-			String[] val = values[i].split(" ");
-//			System.out.println(val[0] + "," + val[1] + "," + val[2]);
-//				int score = Integer.parseInt(val[2]);
-//				if (score > maxScore) {
-//					maxScore = score;
-//				}
-		}
-//		}
-		is.close();
-		isr.close();
-		System.out.println("maxScore: " + maxScore);
+	public static void main(String[] args) {
+		read2();
 		System.out.println("end of prog.");
 	}
 
-	public static void method2() throws IOException {
+	public static void write1() {
 
-		FileReader fr = new FileReader("/home/linuxie/Dev/sample.txt");
-
-		while (true) {
-			int readData = fr.read();
-			if (readData == -1) {
-				break;
-			}
-			char result = (char) readData;
-			System.out.println(result + " : " + readData);
-		}
 	}
 
-	public static void method1() {
+	public static void read2() {
+		try {
+			File file = new File(fileName);
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			InputStream is = new FileInputStream(file);
+			InputStreamReader isr = new InputStreamReader(is);
+//			BufferedReader br = new BufferedReader(isr);
+//			br.readLine();
+
+			char[] buf = new char[5];
+			int readBuf = 0;
+			int sum = 0, maxScore = 0;
+			String name = "", str = "";
+
+			StringBuilder sb = new StringBuilder();
+			while ((readBuf = isr.read(buf)) != -1) {
+//				for (int i = 0; i < readBuf; i++) {
+//					System.out.print((char) buf[i]);
+//				}
+//				System.out.print("\n");
+				sb.append(buf, 0, readBuf);
+			}
+			String result = sb.toString();
+			System.out.println(result);
+
+			is.close();
+			isr.close();
+//			System.out.println("maxScore: " + maxScore);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void read1() {
 		double avg = 0;
 		int cnt = 0, sum = 0, maxScore = 0;
 		String name = "";
