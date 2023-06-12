@@ -70,7 +70,8 @@ public class MemoManager {
 
 	@SuppressWarnings("unchecked")
 	public void readFromFile() {
-		try (FileInputStream fis = new FileInputStream(file); ObjectInputStream ois = new ObjectInputStream(fis);) {
+		try (FileInputStream fis = new FileInputStream(file); //
+				ObjectInputStream ois = new ObjectInputStream(fis);) {
 			if (!file.exists())
 				return;
 
@@ -83,7 +84,8 @@ public class MemoManager {
 	}
 
 	public void storeToFile() {
-		try (FileOutputStream fos = new FileOutputStream(file); ObjectOutputStream oos = new ObjectOutputStream(fos);) {
+		try (FileOutputStream fos = new FileOutputStream(file); //
+				ObjectOutputStream oos = new ObjectOutputStream(fos);) {
 			oos.writeObject(memoStorage);
 
 		} catch (Exception e) {
