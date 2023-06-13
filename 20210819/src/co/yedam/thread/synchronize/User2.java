@@ -8,6 +8,7 @@ public class User2 extends Thread {
 		this.calculator = calculator;
 	}
 
+	@Override
 	public void run() {
 		calculator.setMemory(60);
 	}
