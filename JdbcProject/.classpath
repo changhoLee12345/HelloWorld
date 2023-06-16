@@ -6,10 +6,10 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Dev/activation.jar"/>
-	<classpathentry kind="lib" path="C:/Dev/lombok-1.18.28.jar"/>
-	<classpathentry kind="lib" path="C:/Dev/mail-1.4.7.jar"/>
-	<classpathentry kind="lib" path="C:/Dev/ojdbc10-19.19.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Dev/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/linuxie/Dev/lib/activation.jar"/>
+	<classpathentry kind="lib" path="/home/linuxie/Dev/lib/lombok-1.18.28.jar"/>
+	<classpathentry kind="lib" path="/home/linuxie/Dev/lib/mail-1.4.7.jar"/>
+	<classpathentry kind="lib" path="/home/linuxie/Dev/lib/ojdbc10-19.3.0.0.jar"/>
+	<classpathentry kind="lib" path="/home/linuxie/Dev/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
