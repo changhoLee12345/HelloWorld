@@ -25,7 +25,7 @@ public class ProdExe {
 		int choice;
 		while (true) {
 			Util.prompt("\n==============================================================");
-			Util.prompt("1.상품 2.입출고 3.종료");
+			Util.prompt(" 0.종료 1.상품 2.입출고 ");
 			choice = Util.promptInt("선택");
 			try {
 				switch (choice) {
