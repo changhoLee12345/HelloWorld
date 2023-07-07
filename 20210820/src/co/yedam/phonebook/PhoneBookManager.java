@@ -2,16 +2,20 @@ package co.yedam.phonebook;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashSet;
 import java.util.Iterator;
 
 public class PhoneBookManager {
-	private final File dataFile = new File("d:/PhoneBook.txt");
+	private String runType = "stream";// "file";
+
+	private File dataFile = new File("/home/linuxie/Dev/phonebook.dat");
 
 	HashSet<PhoneInfo> infoStorage = new HashSet<PhoneInfo>();
 
@@ -130,69 +134,103 @@ public class PhoneBookManager {
 	}
 
 	public void storeToFile() {
-		try {
-			FileOutputStream file = new FileOutputStream(dataFile);
-
-//			1.Object 저장.
-//			ObjectOutputStream out = new ObjectOutputStream(file);
-//			Iterator<PhoneInfo> itr = infoStorage.iterator();
-//			while (itr.hasNext())
-//				out.writeObject(itr.next());
+		if (runType.equals("stream")) {
+			storeToStream();
+		} else {
+			try {
 
 //			2.FileWriter 저장.
-			FileWriter out = new FileWriter(dataFile);
+				FileWriter out = new FileWriter(dataFile);
+				Iterator<PhoneInfo> itr = infoStorage.iterator();
+				while (itr.hasNext()) {
+					out.write(itr.next().toString());
+				}
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void storeToStream() {
+		try {
+//		1.Object 저장.
+			FileOutputStream fos = new FileOutputStream(dataFile);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			// 바로 지정.
+//			oos.writeObject(infoStorage);
 			Iterator<PhoneInfo> itr = infoStorage.iterator();
 			while (itr.hasNext()) {
-				out.write(itr.next().toString());
+				oos.writeObject(itr.next());
 			}
-			out.close();
-		} catch (IOException e) {
+			oos.close();
+			fos.close();
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void readFromStream() {
+//		1.Object 읽기.
+		try {
+			FileInputStream fis = new FileInputStream(dataFile);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			// 1. SetCollection에 바로 지정.
+//			infoStorage = (HashSet<PhoneInfo>) ois.readObject();
+			// 2. PhoneInfo 에 지정.
+			while (true) {
+				try {
+					PhoneInfo info = (PhoneInfo) ois.readObject();
+					infoStorage.add(info);
+				} catch (Exception e) {
+					break;
+				}
+			}
+			ois.close();
+			fis.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public void readFromFile() {
 		if (dataFile.exists() == false)
 			return;
 
-		try {
-//			1.Object 읽기.
-//			FileInputStream file = new FileInputStream(dataFile);
-//			ObjectInputStream in = new ObjectInputStream(file);
-//
-//			while (true) {
-//				PhoneInfo info = (PhoneInfo) in.readObject();
-//				if (info == null)
-//					break;
-//				infoStorage.add(info);
-//			}
+		if (runType.equals("stream")) {
+			readFromStream();
+		} else {
+			try {
 
 //			2.FileReader 읽기.
-			FileReader reader = new FileReader(dataFile);// reader.read()
-			BufferedReader in = new BufferedReader(reader);
-			String string;
-			PhoneInfo info = null;
-			while ((string = in.readLine()) != null) {
-				String[] record = string.split(",");
-				int gbn = Integer.parseInt(record[0]);
-				switch (gbn) {
-				case INPUT_SELECT.NORMAL:
-					info = new PhoneInfo(record[1], record[2]);
-					break;
-				case INPUT_SELECT.UNIV:
-					info = new PhoneUnivInfo(record[1], record[2], record[3], Integer.parseInt(record[4]));
-					break;
-				case INPUT_SELECT.COMPANY:
-					info = new PhoneCompanyInfo(record[1], record[2], record[3]);
-					break;
-				}
+				FileReader reader = new FileReader(dataFile);// reader.read()
+				BufferedReader in = new BufferedReader(reader);
+				String string;
+				PhoneInfo info = null;
+				while ((string = in.readLine()) != null) {
+					String[] record = string.split(",");
+					int gbn = Integer.parseInt(record[0]);
+					switch (gbn) {
+					case INPUT_SELECT.NORMAL:
+						info = new PhoneInfo(record[1], record[2]);
+						break;
+					case INPUT_SELECT.UNIV:
+						info = new PhoneUnivInfo(record[1], record[2], record[3], Integer.parseInt(record[4]));
+						break;
+					case INPUT_SELECT.COMPANY:
+						info = new PhoneCompanyInfo(record[1], record[2], record[3]);
+						break;
+					}
 
-				infoStorage.add(info);
-				System.out.println(string);
+					infoStorage.add(info);
+					System.out.println(string);
+				}
+				in.close();
+			} catch (IOException e) {
+				return;
 			}
-			in.close();
-		} catch (IOException e) {
-			return;
 		}
 	}
 }
