@@ -9,24 +9,26 @@ package co.yedam.chap6;
 //표기법 : 카멜케이스,   스네이크케이스 : Kor_score
 //2. 설계도를 작성(선언)
 public class KorScore {
-	int[] kor = new int[] { 100,300,50};
-	
+	int[] kor = new int[] { 100, 300, 50 };
+
 	public void print() {
-		for(int temp : kor) {
+		for (int temp : kor) {
 			System.out.println(temp);
 		}
-	}	
+	}
+
 	public void total() {
 		int sum = 0;
-		for(int temp : kor) {
+		for (int temp : kor) {
 			sum += temp;
 		}
 		System.out.println(sum);
-	}	
+	}
+
 	public void max() {
-		int m=0;
-		for(int temp : kor) {
-			//if()
+		int m = 0;
+		for (int temp : kor) {
+			// if()
 		}
 		System.out.println(m);
 	}
