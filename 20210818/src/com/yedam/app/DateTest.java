@@ -34,7 +34,7 @@ public class DateTest {
 		System.out.println("day4: " + day4);
 		LocalDateTime day5 = LocalDateTime.now();
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
-		System.out.println("day4 : " + day5.format(format));
+		System.out.println("day5 : " + day5.format(format));
 
 		// Duration, LocalTime, LocalDateTime, Period
 

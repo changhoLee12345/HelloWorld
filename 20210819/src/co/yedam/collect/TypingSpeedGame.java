@@ -23,6 +23,7 @@ public class TypingSpeedGame {
 //		}
 		System.out.println(aryToStr(strs));
 
+		game1();
 	}
 
 	public static String aryToStr(String[] ary) {
