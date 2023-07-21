@@ -7,12 +7,12 @@ public class Calculator {
 		return memory;
 	}
 
-	public synchronized void setMemory(int memory) {
+	public void setMemory(int memory) {
 		System.out.println(Thread.currentThread().getName());
 		this.memory = memory;
 
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
