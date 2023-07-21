@@ -27,7 +27,7 @@ public class DateTest {
 		Calendar day2 = Calendar.getInstance();
 		day2.set(2020, 7, 18);
 		long result = day1.getTimeInMillis() - day2.getTimeInMillis();
-		System.out.println(result / 1000 / 60 / 60 / 24);
+		System.out.println("일수계산: " +(result / 1000 / 60 / 60 / 24));
 
 		LocalDate day3 = LocalDate.now();
 		LocalDate day4 = day3.plusDays(100);
