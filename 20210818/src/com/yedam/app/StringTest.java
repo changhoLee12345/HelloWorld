@@ -11,7 +11,7 @@ public class StringTest {
 		// 파일의 이름과 확장자를 구하는 코드.
 		// 문자찾기.
 
-		String ssn = "901210-1231234";
+		String ssn = "231210-3231234";
 
 		Object obj = new Object();
 
@@ -20,7 +20,7 @@ public class StringTest {
 		System.out.println("길이: " + s);
 
 		// 성별
-		System.out.println("성별: " + StringUtil.findSex(ssn));
+		System.out.println("성별: " + StringUtil.findGender(ssn));
 
 		// 출생년도
 		String year = ssn.substring(0, 2);
