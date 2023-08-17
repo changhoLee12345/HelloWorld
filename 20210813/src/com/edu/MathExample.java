@@ -20,6 +20,6 @@ public class MathExample {
 		System.out.println("두수의 몫: " + (num1 / num2));
 		System.out.println("두수의 나머지: " + (num1 % num2));
 		
-		var num3 = 10.9;
+		//var num3 = 10.9;
 	}
 }
