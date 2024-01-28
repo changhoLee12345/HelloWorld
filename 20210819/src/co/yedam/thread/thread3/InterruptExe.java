@@ -36,15 +36,15 @@ class PrintThread3 extends Thread {
 public class InterruptExe {
 
 	public static void main(String[] args) {
-		Thread thread1 = new PrintThread2();
-		thread1.start();
+		Thread thread = new PrintThread3();
+		thread.start();
 
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		thread1.interrupt();
+		thread.interrupt();
 
 	}
 }
