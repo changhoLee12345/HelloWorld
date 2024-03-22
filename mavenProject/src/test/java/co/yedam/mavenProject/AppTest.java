@@ -34,6 +34,7 @@ public class AppTest extends TestCase {
 	 */
 	public void testApp() {
 		assertTrue(true);
+
 		SqlSession session = DataSource.getInstance().openSession(true);
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 
@@ -42,9 +43,11 @@ public class AppTest extends TestCase {
 		vo.setContent("modify content");
 		vo.setWriter("updatee");
 		vo.setBoardNo(263);
-		
+
+		// 데이터 변경.
 		mapper.updateBoard(vo);
 
+		// 데이터 조회.
 		mapper.boardList().forEach(board -> {
 			System.out.println(board);
 		});
