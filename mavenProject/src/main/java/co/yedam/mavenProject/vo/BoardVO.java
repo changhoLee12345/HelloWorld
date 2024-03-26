@@ -1,6 +1,7 @@
 package co.yedam.mavenProject.vo;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -13,4 +14,6 @@ public class BoardVO {
 	private int viewCnt;
 	private Date createDate;
 	private Date updateDate;
+	
+	private List<ReplyVO> replys;
 }
