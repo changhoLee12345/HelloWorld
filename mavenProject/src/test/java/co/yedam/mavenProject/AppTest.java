@@ -50,10 +50,6 @@ public class AppTest extends TestCase {
 		vo.setViewCnt(11);
 
 		// 데이터 변경.
-//		mapper.updateBoard(vo);
-//		vo = mapper.getBoard(vo);
-		System.out.println(vo);
-
 		SearchDTO search = new SearchDTO();
 		search.setSearchCondition("title");
 		search.setKeyword("every");
@@ -61,15 +57,10 @@ public class AppTest extends TestCase {
 
 		// 데이터 조회.
 		vo = mapper.replyByBoard(512);
-//		System.out.println(vo);
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(vo);
 		System.out.println(json);
-
-//		vo.getReplys().forEach(reply -> {
-//			System.out.println(reply);
-//		});
 
 	}
 }
