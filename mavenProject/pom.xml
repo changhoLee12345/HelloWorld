@@ -15,7 +15,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<!-- maven.archetype.quickstart -->
+	<!-- maven.archetype.quickstart check it !!!!!-->
 	<!-- maven project with junit test -->
 
 	<dependencies>
