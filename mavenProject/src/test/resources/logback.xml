@@ -2,18 +2,22 @@
 <!DOCTYPE configuration>
 <configuration>
 
-  <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
-    <encoder>
-      <pattern>%5level [%thread] - %msg%n</pattern>
-    </encoder>
-  </appender>
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%5level [%thread] - %msg%n</pattern>
+		</encoder>
+	</appender>
 
-  <logger name="co.yedam.mavenProject.mapper.BoardMapper">
-    <level value="debug"/>
-  </logger>
+	<logger name="co.yedam.mavenProject.mapper.BoardMapper">
+		<level value="info" />
+	</logger>
 
-  <root level="error">
-    <appender-ref ref="stdout"/>
-  </root>
+	<logger name="co.yedam.mavenProject.mapper.QueryMapper">
+		<level value="debug" />
+	</logger>
+
+	<root level="error">
+		<appender-ref ref="stdout" />
+	</root>
 
 </configuration>

@@ -40,11 +40,11 @@ public class AppTest extends TestCase {
 		assertTrue(true);
 
 		SqlSession session = DataSource.getInstance().openSession(true);
-//		BoardMapper mapper = session.getMapper(BoardMapper.class);
-
 		session.selectList("co.yedam.mavenProject.mapper.QueryMapper.memberList").forEach(mem -> {
 			System.out.println(mem.toString());
 		});
+
+//		BoardMapper mapper = session.getMapper(BoardMapper.class);
 //		session.selectList("co.yedam.mavenProject.mapper.BoardMapper.boardList").forEach(board -> {
 //			System.out.println(board.toString());
 //		});
