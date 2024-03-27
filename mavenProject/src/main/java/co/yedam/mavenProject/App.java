@@ -1,6 +1,6 @@
 package co.yedam.mavenProject;
 
-import co.yedam.mavenProject.test.MybatisTests;
+import co.yedam.mavenProject.zzz.MybatisTests;
 
 /**
  * Hello world!

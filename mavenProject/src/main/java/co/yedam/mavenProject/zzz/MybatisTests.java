@@ -1,4 +1,4 @@
-package co.yedam.mavenProject.test;
+package co.yedam.mavenProject.zzz;
 
 import java.io.IOException;
 import java.io.Reader;
