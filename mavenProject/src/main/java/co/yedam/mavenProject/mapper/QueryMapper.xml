@@ -6,6 +6,23 @@
 	<select id="memberList" resultType="co.yedam.mavenProject.vo.MemberVO">
 		select *
 		from tbl_member
+		order by mem_id
 	</select>
+	
+	<select id="selectMember" parameterType="string" resultType="co.yedam.mavenProject.vo.MemberVO">
+	  select *
+	  from tbl_member
+	  where mem_id = #{memId}
+	</select>
+	
+	<insert id="insertMember" parameterType="co.yedam.mavenProject.vo.MemberVO">
+	  insert into tbl_member (mem_id, mem_pw, mem_name, mem_phone)
+	  values(#{memId}, #{memPw}, #{memName}, #{memPhone})
+	</insert>
+	
+	<delete id="deleteMember" parameterType="string">
+	  delete from tbl_member
+	  where mem_id = #{memId}
+	</delete>
 
 </mapper>
