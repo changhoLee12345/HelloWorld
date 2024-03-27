@@ -40,27 +40,14 @@ public class AppTest extends TestCase {
 		assertTrue(true);
 
 		SqlSession session = DataSource.getInstance().openSession(true);
-		BoardMapper mapper = session.getMapper(BoardMapper.class);
+//		BoardMapper mapper = session.getMapper(BoardMapper.class);
 
-		BoardVO vo = new BoardVO();
-		vo.setTitle("modify title");
-		vo.setContent("modify content");
-		vo.setWriter("updatee");
-		vo.setBoardNo(263);
-		vo.setViewCnt(11);
-
-		// 데이터 변경.
-		SearchDTO search = new SearchDTO();
-		search.setSearchCondition("title");
-		search.setKeyword("every");
-		search.setOrderBy("board_no desc");
-
-		// 데이터 조회.
-		vo = mapper.replyByBoard(512);
-
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String json = gson.toJson(vo);
-		System.out.println(json);
+		session.selectList("co.yedam.mavenProject.mapper.QueryMapper.memberList").forEach(mem -> {
+			System.out.println(mem.toString());
+		});
+//		session.selectList("co.yedam.mavenProject.mapper.BoardMapper.boardList").forEach(board -> {
+//			System.out.println(board.toString());
+//		});
 
 	}
 }

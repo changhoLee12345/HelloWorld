@@ -23,6 +23,7 @@
 	</environments>
 	
 	<mappers>
+		<mapper resource="co/yedam/mavenProject/mapper/QueryMapper.xml" />
 		<package name="co.yedam.mavenProject"/>
 	</mappers>
 </configuration>

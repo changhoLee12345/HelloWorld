@@ -1,9 +1,6 @@
 package co.yedam.mavenProject;
 
-import org.apache.ibatis.session.SqlSession;
-
-import co.yedam.mavenProject.common.DataSource;
-import co.yedam.mavenProject.mapper.BoardMapper;
+import co.yedam.mavenProject.jdbc.ManageExe;
 
 /**
  * Hello world!
@@ -12,10 +9,6 @@ import co.yedam.mavenProject.mapper.BoardMapper;
 public class App {
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
-		SqlSession session = DataSource.getInstance().openSession();
-		BoardMapper mapper = session.getMapper(BoardMapper.class);
-		mapper.boardList().forEach(board -> {
-			System.out.println(board);
-		});
+		ManageExe.exe();
 	}
 }

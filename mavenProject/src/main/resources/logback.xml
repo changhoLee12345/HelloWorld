@@ -9,7 +9,7 @@
   </appender>
 
   <logger name="co.yedam.mavenProject.mapper.BoardMapper">
-    <level value="debug"/>
+    <level value="level"/>
   </logger>
 
   <root level="error">
