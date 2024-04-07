@@ -4,12 +4,12 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<properties resource="config/db.properties"/>
-	
+
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL"/>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
-	
+
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
@@ -21,7 +21,7 @@
 			</dataSource>
 		</environment>
 	</environments>
-	
+
 	<mappers>
 		<mapper resource="co/yedam/mavenProject/mapper/QueryMapper.xml" />
 		<package name="co.yedam.mavenProject"/>
