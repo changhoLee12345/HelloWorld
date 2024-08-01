@@ -3,19 +3,20 @@ package co.yedam.io;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 public class ByteTest {
 
 	public static void main(String[] args) {
-//		write1();
+		write1();
 //		read1();
-		try {
+//		try {
 //			write2();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 //		read2();
-		filecopy();
+//		filecopy();
 	}
 
 	public static void filecopy() {
@@ -90,7 +91,7 @@ public class ByteTest {
 	// 1바이트 출력
 	public static void write1() {
 		try {
-			FileOutputStream fos = new FileOutputStream("c:/Temp/data1.dat");
+			OutputStream fos = new FileOutputStream("c:/Temp/data1.dat");
 			byte a = 10;
 			byte b = 20;
 			fos.write(a);
